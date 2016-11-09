@@ -4,8 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -16,6 +21,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,14 +31,17 @@ import butterknife.OnClick;
 public class LogInActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
-
+    private FirebaseUser user;
+    private FirebaseAuth.AuthStateListener AuthListener;
+    private boolean logedIn;
     private static final String TAG = "DriveIT";
 
     @BindView(R.id.editTextPassword)
     EditText editTextPassword;
     @BindView(R.id.editTextUsername)
     EditText editTextUsername;
+    @BindView(R.id.button_log_in)
+    Button buttonLogIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +51,38 @@ public class LogInActivity extends AppCompatActivity {
 
         firebaseAuth = firebaseAuth.getInstance();
 
+        AuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
 
-
-
-
+            }
+        };
     }
 
 
     @OnClick(R.id.button_log_in)
     public void onClick() {
-        signIn();
+        final String user = editTextUsername.getText().toString();
+        final String password = editTextPassword.getText().toString();
+        if (checkUsernamePassword(user, password)) {
+            Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
+        } else {
+            signIn();
+            Intent i = new Intent(this, MainActivity.class);
+            if (logedIn) {
+                startActivity(i);
+                finish();
+            } else
+                Toast.makeText(this, R.string.wrong_log_in_data, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void signIn() {
@@ -59,12 +92,52 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
+                if (task.isSuccessful()){
+                    logedIn = true;
+                    Log.d(TAG, "USAO");
+                }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "FAILURE",e);
+                Log.e(TAG, "FAILURE", e);
+                logedIn = false;
             }
         });
+    }
+
+    private boolean isValidEmail(String email) {
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean checkUsernamePassword(String user, String password) {
+        if (!isValidEmail(user)) {
+            Toast.makeText(this, R.string.wrong_email_format, Toast.LENGTH_SHORT).show();
+        }
+        if (user == "" || password == "")
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(AuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (AuthListener != null) {
+            firebaseAuth.removeAuthStateListener(AuthListener);
+        }
+        firebaseAuth.getInstance().signOut();
     }
 }
