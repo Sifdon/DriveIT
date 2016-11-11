@@ -72,16 +72,11 @@ public class LogInActivity extends AppCompatActivity {
     public void onClick() {
         final String user = editTextUsername.getText().toString();
         final String password = editTextPassword.getText().toString();
+
         if (checkUsernamePassword(user, password)) {
             Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
         } else {
             signIn();
-            Intent i = new Intent(this, MainActivity.class);
-            if (logedIn) {
-                startActivity(i);
-                finish();
-            } else
-                Toast.makeText(this, R.string.wrong_log_in_data, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -91,10 +86,14 @@ public class LogInActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(user, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
+
                 if (task.isSuccessful()){
+
+                    Intent i = new Intent(LogInActivity.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
+                    Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
                     logedIn = true;
-                    Log.d(TAG, "USAO");
                 }
 
             }
@@ -120,10 +119,11 @@ public class LogInActivity extends AppCompatActivity {
         if (!isValidEmail(user)) {
             Toast.makeText(this, R.string.wrong_email_format, Toast.LENGTH_SHORT).show();
         }
-        if (user == "" || password == "")
+        if (user.equals("") || password.equals(""))
             return true;
         else
             return false;
+
     }
 
     @Override
