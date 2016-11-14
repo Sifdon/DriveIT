@@ -1,5 +1,6 @@
 package hr.air.projekt.driveit;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +45,8 @@ public class LogInActivity extends AppCompatActivity {
     EditText editTextUsername;
     @BindView(R.id.button_log_in)
     Button buttonLogIn;
+    @BindView(R.id.login_progress)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class LogInActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
         } else {
             signIn();
+
         }
     }
 
@@ -94,6 +100,9 @@ public class LogInActivity extends AppCompatActivity {
                     finish();
                     Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
                     logedIn = true;
+                    progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.VISIBLE);
+
                 }
 
             }
@@ -102,8 +111,11 @@ public class LogInActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Log.e(TAG, "FAILURE", e);
                 logedIn = false;
+
             }
         });
+                
+
     }
 
     private boolean isValidEmail(String email) {
