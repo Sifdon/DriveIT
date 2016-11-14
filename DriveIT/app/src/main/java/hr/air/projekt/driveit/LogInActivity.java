@@ -111,11 +111,11 @@ public class LogInActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Log.e(TAG, "FAILURE", e);
                 logedIn = false;
+
             }
         });
-        Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show();
-    }
 
+    }
     private boolean isValidEmail(String email) {
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -124,13 +124,15 @@ public class LogInActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-
     private boolean checkUsernamePassword(String user, String password) {
         if (!isValidEmail(user)) {
             Toast.makeText(this, R.string.wrong_email_format, Toast.LENGTH_SHORT).show();
         }
-        if (user.equals("") || password.equals(""))
+        if (user.equals("") || password.equals("")){
             return true;
+        }
+
+
         else
             return false;
 
