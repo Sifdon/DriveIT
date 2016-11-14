@@ -111,11 +111,9 @@ public class LogInActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Log.e(TAG, "FAILURE", e);
                 logedIn = false;
-
             }
         });
-                
-
+        Toast.makeText(this, "Wrong password", Toast.LENGTH_SHORT).show();
     }
 
     private boolean isValidEmail(String email) {
