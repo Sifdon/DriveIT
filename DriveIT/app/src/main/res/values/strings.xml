@@ -12,4 +12,7 @@
     <string name="wrong_email_format">Email formatting is wrong!</string>
     <string name="wrong_log_in_data">Email or password is incorrect!</string>
     <string name="empty_field_warning">Please fill all fields.</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="log_in">Log in</string>
 </resources>

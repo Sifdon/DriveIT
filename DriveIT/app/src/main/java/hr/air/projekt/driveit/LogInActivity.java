@@ -36,9 +36,9 @@ public class LogInActivity extends AppCompatActivity {
     private boolean logedIn;
     private static final String TAG = "DriveIT";
 
-    @BindView(R.id.editTextPassword)
+    @BindView(R.id.txt_password)
     EditText editTextPassword;
-    @BindView(R.id.editTextUsername)
+    @BindView(R.id.txt_email)
     EditText editTextUsername;
     @BindView(R.id.button_log_in)
     Button buttonLogIn;
