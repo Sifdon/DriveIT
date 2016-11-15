@@ -4,24 +4,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:icon="?android:attr/actionModePasteDrawable"
+            android:title="@string/automobili" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:icon="?android:attr/actionModePasteDrawable"
+            android:title="@string/korisnici" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="@string/servisi" />
+
+
+
     </group>
 
     <item
         android:id="@+id/logout"
-        android:title="Sign out" />
+        android:title="Sign out"
+        android:icon="@android:drawable/ic_lock_power_off" />
 
 </menu>

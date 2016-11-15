@@ -15,4 +15,7 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="log_in">Log in</string>
+    <string name="automobili">Automobili</string>
+    <string name="korisnici">Korisnici</string>
+    <string name="servisi">Servisi</string>
 </resources>
