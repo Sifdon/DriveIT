@@ -18,4 +18,13 @@
     <string name="automobili">Automobili</string>
     <string name="korisnici">Korisnici</string>
     <string name="servisi">Servisi</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model_veichle">Model veichle</string>
+    <string name="production_year">Production year</string>
+    <string name="kw">Kw</string>
+    <string name="chassis_number">Chassis number</string>
+    <string name="registration_number">registration_number</string>
+    <string name="registration_date">Registration date</string>
+    <string name="registration_expired">Registration expired</string>
+    <string name="average_fuel_consumption">Average fuel consumption</string>
 </resources>

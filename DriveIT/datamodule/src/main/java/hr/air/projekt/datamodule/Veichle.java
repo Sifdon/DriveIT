@@ -13,7 +13,7 @@ public class Veichle {
     private String kw;
     private String chassisNumber;
     private String registrationNumber;
-    private String averageFuelConsumption;
+    private float averageFuelConsumption;
     private boolean free;
     private int fuelStatus;
 
@@ -21,7 +21,7 @@ public class Veichle {
     }
 
     public Veichle(String manufacturer, String model, String productYear, String registrationDate, String registrationExpired, String kw,
-                   String chassisNumber, String registrationNumber, String averageFuelConsumption,
+                   String chassisNumber, String registrationNumber, float averageFuelConsumption,
                    boolean free, int fuelStatus) {
         this.manufacturer = manufacturer;
         this.model = model;
@@ -100,11 +100,11 @@ public class Veichle {
         this.registrationNumber = registrationNumber;
     }
 
-    public String getAverageFuelConsumption() {
+    public float getAverageFuelConsumption() {
         return averageFuelConsumption;
     }
 
-    public void setAverageFuelConsumption(String averageFuelConsumption) {
+    public void setAverageFuelConsumption(float averageFuelConsumption) {
         this.averageFuelConsumption = averageFuelConsumption;
     }
 
