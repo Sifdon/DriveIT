@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="?android:attr/actionModePasteDrawable"
-            android:title="@string/automobili" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="?android:attr/actionModePasteDrawable"
-            android:title="@string/korisnici" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/servisi" />
+    <group
+        android:id="@+id/dynamic_group"
+        android:checkableBehavior="single"
+        android:orderInCategory="0"/>
 
-
-
+    <group android:id="@+id/additional_group"
+        android:checkableBehavior="none"
+        android:orderInCategory="100">
+        <item
+            android:id="@+id/logout"
+            android:title="@string/log_out"
+            android:icon="@android:drawable/ic_lock_power_off" />
     </group>
 
-    <item
-        android:id="@+id/logout"
-        android:title="Sign out"
-        android:icon="@android:drawable/ic_lock_power_off" />
 
-</menu>
+    </menu>

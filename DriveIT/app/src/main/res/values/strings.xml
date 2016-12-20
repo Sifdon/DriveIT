@@ -18,4 +18,5 @@
     <string name="automobili">Automobili</string>
     <string name="korisnici">Korisnici</string>
     <string name="servisi">Servisi</string>
+    <string name="log_out">Log out</string>
 </resources>

@@ -1,10 +1,15 @@
 package hr.air.projekt.driveit;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,60 +20,70 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import butterknife.BindView;
 import hr.air.projekt.datamodule.User;
+import hr.air.projekt.driveit.Fragments.UserListFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        FragmentManager.OnBackStackChangedListener {
     private final static String TAG = "DriveIT";
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference userReference;
+
+
+    //Navigation manager
+    private Toolbar toolbar;
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle drawerToggle;
+    private NavigationView navigationView;
+    FragmentManager fragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        drawer.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
+        fragmentManager = getFragmentManager();
+        fragmentManager.addOnBackStackChangedListener(this);
+
+        toolbar.setOnClickListener(navigationClick);
+
+        setUpAvailableModules();
+
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,25 +110,86 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        switch(id)
+        {
+            //Handle click on static options
+            case R.id.logout:
+                drawer.closeDrawer(GravityCompat.START);
+                Toast.makeText(this, R.string.log_out, Toast.LENGTH_LONG).show();
+                logOut();
+                break;
 
-        } else if (id == R.id.nav_slideshow) {
-
+            //Handle clicks on other (dynamicaly added drawer) items
+            default:
+                NavigationManager.getInstance().selectNavigationItem(item);
+                break;
         }
 
-        else if (id == R.id.logout) {
-            FirebaseAuth.getInstance().signOut();
-            Intent i = new Intent (this,LogInActivity.class);
-            startActivity(i);
-            finish();
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    public void logOut() {
+        FirebaseAuth.getInstance().signOut();
+        Intent i = new Intent(this, LogInActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        drawerToggle.setDrawerIndicatorEnabled(fragmentManager.getBackStackEntryCount() == 0);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(fragmentManager.getBackStackEntryCount() > 0);
+        drawerToggle.syncState();
+    }
+
+    private void setUpAvailableModules()
+    {
+        NavigationManager nm = NavigationManager.getInstance();
+        nm.setDependencies(this, drawer, navigationView, R.id.dynamic_group);
+        nm.clearNavigationItems();
+        nm.addItem(new UserListFragment());
+        nm.showDefaultFragment();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(fragmentManager.getBackStackEntryCount() != 0){
+            // there is something on the stack, I'm in the fragment
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else{
+                fragmentManager.popBackStack();
+            }
+        } else {
+            // I'm on the landing page, close the drawer or exit
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else{
+                super.onBackPressed();
+            }
+        }
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
+    View.OnClickListener navigationClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(getFragmentManager().getBackStackEntryCount() == 0) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+            else{
+                onBackPressed();
+            }
+        }
+    };
 }

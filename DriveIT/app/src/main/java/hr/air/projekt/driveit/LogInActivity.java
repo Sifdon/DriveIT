@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,34 +59,29 @@ public class LogInActivity extends AppCompatActivity {
 
         firebaseAuth = firebaseAuth.getInstance();
 
-        AuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-
-            }
-        };
+        if(firebaseAuth.getCurrentUser() != null){
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
+        }
+        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
     }
 
 
     @OnClick(R.id.button_log_in)
     public void onClick() {
-        final String user = editTextUsername.getText().toString();
+        final String email = editTextUsername.getText().toString();
         final String password = editTextPassword.getText().toString();
 
-        if (checkUsernamePassword(user, password)) {
-            Toast.makeText(this, R.string.empty_field_warning, Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
+            return;
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
+            return;
         } else {
             signIn();
-
         }
+
     }
 
     private void signIn() {
@@ -93,29 +91,22 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful()){
-
-                    Intent i = new Intent(LogInActivity.this,MainActivity.class);
+                if (task.isSuccessful()) {
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
                     finish();
                     Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
                     logedIn = true;
                     progressBar.setVisibility(View.GONE);
                     progressBar.setVisibility(View.VISIBLE);
-
                 }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "FAILURE", e);
-                logedIn = false;
 
             }
         });
 
     }
+
+
     private boolean isValidEmail(String email) {
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -124,32 +115,16 @@ public class LogInActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-    private boolean checkUsernamePassword(String user, String password) {
-        if (!isValidEmail(user)) {
-            Toast.makeText(this, R.string.wrong_email_format, Toast.LENGTH_SHORT).show();
-        }
-        if (user.equals("") || password.equals("")){
-            return true;
-        }
 
-
-        else
-            return false;
-
-    }
 
     @Override
     public void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(AuthListener);
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (AuthListener != null) {
-            firebaseAuth.removeAuthStateListener(AuthListener);
-        }
-        firebaseAuth.getInstance().signOut();
     }
 }
