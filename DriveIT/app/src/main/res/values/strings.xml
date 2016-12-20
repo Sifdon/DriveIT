@@ -19,4 +19,9 @@
     <string name="korisnici">Korisnici</string>
     <string name="servisi">Servisi</string>
     <string name="log_out">Log out</string>
+    <string name="label_firstName">First name</string>
+    <string name="label_lastName">Last name</string>
+    <string name="label_email">Email</string>
+    <string name="button_update">Update</string>
+    <string name="button_delete">Delete</string>
 </resources>

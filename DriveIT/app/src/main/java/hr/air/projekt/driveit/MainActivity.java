@@ -38,6 +38,7 @@ import java.util.UUID;
 import butterknife.BindView;
 import hr.air.projekt.datamodule.User;
 import hr.air.projekt.driveit.Fragments.UserListFragment;
+import hr.air.projekt.driveit.Helper.CurrentActivity;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements
     private final static String TAG = "DriveIT";
     private FirebaseAuth firebaseAuth;
     private DatabaseReference userReference;
-
 
     //Navigation manager
     private Toolbar toolbar;
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        CurrentActivity.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);

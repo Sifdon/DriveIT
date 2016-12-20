@@ -75,6 +75,8 @@ public class NavigationManager {
         navigationItems.clear();
     }
 
+
+
     public void addItem(NavigationItem newItem){
         newItem.setPosition(navigationItems.size());
         navigationItems.add(newItem);
@@ -83,7 +85,6 @@ public class NavigationManager {
     }
 
     public void showDefaultFragment(NavigationItem preferredItem) {
-
         displayFragment(preferredItem);
         mNavigationView.getMenu().getItem(preferredItem.getPosition()).setChecked(true);
     }
