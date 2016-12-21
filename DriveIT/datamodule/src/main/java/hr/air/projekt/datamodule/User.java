@@ -19,6 +19,9 @@ public class User {
     public User(FragmentActivity activity, ArrayList<User> userList) {
     }
 
+    public User() {
+    }
+
     public User(String UID, String firstName, String lastName, String email) {
         this.UID = UID;
         this.firstName = firstName;

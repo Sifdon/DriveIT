@@ -19,12 +19,13 @@
             android:layout_weight="0.75"
             android:textAlignment="center" />
 
-        <TextView
+        <EditText
             android:id="@+id/list_firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="First Name" />
+            tools:text="First Name"
+            android:clickable="false" />
 
     </LinearLayout>
 
@@ -41,12 +42,13 @@
             android:layout_weight="0.75"
             android:textAlignment="center" />
 
-        <TextView
+        <EditText
             android:id="@+id/list_lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Last Name" />
+            tools:text="Last Name"
+            android:clickable="false" />
     </LinearLayout>
 
 
@@ -63,12 +65,13 @@
             android:layout_weight="0.75"
             android:textAlignment="center" />
 
-        <TextView
+        <EditText
             android:id="@+id/list_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Email" />
+            tools:text="Email"
+            android:clickable="false" />
     </LinearLayout>
 
     <LinearLayout

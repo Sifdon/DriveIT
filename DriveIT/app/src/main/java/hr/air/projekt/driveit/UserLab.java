@@ -18,10 +18,16 @@ import hr.air.projekt.datamodule.User;
  */
 
 public class UserLab {
+    private static final String CHILD_USER = "users";
     private User user;
     private Map<String, Object> users;
+    private DatabaseReference updateUserRef,deleteUserRef;
+    private FirebaseDatabase database;
+
 
     public UserLab() {
+        database = FirebaseDatabase.getInstance();
+
     }
 
     public Map<String, Object> getAllUsers(final DataSnapshot snapshot){
@@ -62,5 +68,20 @@ public class UserLab {
 
     public void addUser(User user, DatabaseReference databaseReference){
 
+    }
+
+    public void updateUser(User user){
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference db = database.getReference().child(CHILD_USER).child(user.getUID());
+        db.setValue(user);
+
+    }
+
+
+    public void deleteUser(User u){System.out.println(u.getFirstName());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference dba = database.getReference().child(u.getUID());
+        dba.removeValue();
     }
 }

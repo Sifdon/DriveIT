@@ -24,4 +24,7 @@
     <string name="label_email">Email</string>
     <string name="button_update">Update</string>
     <string name="button_delete">Delete</string>
+    <string name="removal_question_user">Do you wish to remove this user?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 </resources>
