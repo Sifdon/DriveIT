@@ -18,6 +18,7 @@
     <string name="automobili">Automobili</string>
     <string name="korisnici">Korisnici</string>
     <string name="servisi">Servisi</string>
+<<<<<<< HEAD
     <string name="log_out">Log out</string>
     <string name="label_firstName">First name</string>
     <string name="label_lastName">Last name</string>
@@ -27,4 +28,15 @@
     <string name="removal_question_user">Do you wish to remove this user?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+=======
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model_veichle">Model veichle</string>
+    <string name="production_year">Production year</string>
+    <string name="kw">Kw</string>
+    <string name="chassis_number">Chassis number</string>
+    <string name="registration_number">registration_number</string>
+    <string name="registration_date">Registration date</string>
+    <string name="registration_expired">Registration expired</string>
+    <string name="average_fuel_consumption">Average fuel consumption</string>
+>>>>>>> origin/master
 </resources>
