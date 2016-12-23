@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import hr.air.projekt.datamodule.User;
+import hr.air.projekt.datamodule.Vehicle;
 import hr.air.projekt.driveit.Helper.NavigationItem;
 
 /**
@@ -25,6 +26,7 @@ public class NavigationManager {
     private int mItemGroupId;
     private DrawerLayout mDrawerLayout;
     private ArrayList<User> userList;
+    private ArrayList<Vehicle> vehicleList;
 
 
 
@@ -32,6 +34,7 @@ public class NavigationManager {
     private NavigationManager(){
         navigationItems = new ArrayList<NavigationItem>();
         userList = new ArrayList<User>();
+        vehicleList = new ArrayList<Vehicle>();
 
     }
 

@@ -40,7 +40,8 @@ public class UserLab {
         for (Map.Entry<String, Object> entry : userMap.entrySet()) {
             //Get user map
             Map singleUser = (Map) entry.getValue();
-            User u = new User((String)singleUser.get("UID"),(String)singleUser.get("firstName"),(String)singleUser.get("lastName"),(String)singleUser.get("email"));
+            User u = new User((String)singleUser.get("UID"),(String)singleUser.get("firstName"),(String)singleUser.get("lastName"),
+                    (String)singleUser.get("email"));
             userList.add(u);
         }
         return userList;

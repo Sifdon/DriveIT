@@ -211,7 +211,6 @@
         android:id="@+id/seekFuelstatus"
         android:text="Fuel status"
         android:layout_weight="0.60"
-        android:min="0"
         android:max="100"/>
 
 
