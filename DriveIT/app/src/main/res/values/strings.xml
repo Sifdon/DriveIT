@@ -3,9 +3,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-
     <string name="log_in_username">Username</string>
     <string name="log_in_password">Password</string>
     <string name="title_activity_main">MainActivity</string>
@@ -18,7 +16,6 @@
     <string name="automobili">Automobili</string>
     <string name="korisnici">Korisnici</string>
     <string name="servisi">Servisi</string>
-<<<<<<< HEAD
     <string name="log_out">Log out</string>
     <string name="label_firstName">First name</string>
     <string name="label_lastName">Last name</string>
@@ -28,7 +25,6 @@
     <string name="removal_question_user">Do you wish to remove this user?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
-=======
     <string name="manufacturer">Manufacturer</string>
     <string name="model_veichle">Model veichle</string>
     <string name="production_year">Production year</string>
@@ -38,5 +34,10 @@
     <string name="registration_date">Registration date</string>
     <string name="registration_expired">Registration expired</string>
     <string name="average_fuel_consumption">Average fuel consumption</string>
->>>>>>> origin/master
+    <string name="add_user">Add user</string>
+    <string name="new_user">New user</string>
+    <string name="label_password">Password</string>
+    <string name="label_repeatPassword">Repeat password</string>
+    <string name="passwords_dont_match">Passwords do not match</string>
+
 </resources>

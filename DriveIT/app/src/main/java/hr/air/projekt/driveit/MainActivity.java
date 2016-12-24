@@ -23,6 +23,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,12 +42,13 @@ import butterknife.BindView;
 import hr.air.projekt.datamodule.User;
 import hr.air.projekt.driveit.Fragments.UserListFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
+import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         FragmentManager.OnBackStackChangedListener {
     private final static String TAG = "DriveIT";
-    private FirebaseAuth firebaseAuth;
+    private static FirebaseAuth firebaseAuth;
     private DatabaseReference userReference;
 
     //Navigation manager
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
         CurrentActivity.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
-
+        CurrentFirebaseAuth.setFirebaseAuth(firebaseAuth);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -132,10 +136,10 @@ public class MainActivity extends AppCompatActivity implements
 
 
     public void logOut() {
-        FirebaseAuth.getInstance().signOut();
+        finish();
+        firebaseAuth.signOut();
         Intent i = new Intent(this, LogInActivity.class);
         startActivity(i);
-        finish();
     }
 
     @Override

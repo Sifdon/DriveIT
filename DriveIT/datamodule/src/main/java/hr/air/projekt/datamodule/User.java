@@ -15,7 +15,6 @@ public class User {
     private String lastName;
     private String Email;
 
-
     public User(FragmentActivity activity, ArrayList<User> userList) {
     }
 

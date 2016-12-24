@@ -79,24 +79,16 @@ public class UserHolder extends RecyclerView.ViewHolder implements View.OnClickL
             final int parentPosition = getAdapterPosition();
             final User currentUser = userData;
             final List<User> currentUsers = allusers;
-            userLab.deleteUser(userData);
-            /*alertDialog.setTitle(itemView.getContext().getString(R.string.removal_question_user));
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, itemView.getContext().getString(R.string.delete), new DialogInterface.OnClickListener() {
+            alertDialog.setTitle(itemView.getContext().getString(R.string.removal_question_user));
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, itemView.getContext().getString(R.string.delete),
+                    new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    int position = 0;
-                    for (User user : currentUsers) {
-                        if (currentUser.equals(user)) {
-                            Log.d("sc","wtf");
-                            break;
-                        }
-                        else{
-                            position++;}
-
-                    }
-                    userLab.deleteUser(userData.getUID());
-                    adapter.notifyItemRemoved(position);
+                    userLab.deleteUser(userData);
+                    allusers.remove(getAdapterPosition());
+                    adapter.notifyItemRemoved(getAdapterPosition());
                     adapter.notifyDataSetChanged();
+                    adapter.notifyItemRangeChanged(getAdapterPosition(),allusers.size());
                     alertDialog.dismiss();
                 }
             });
@@ -107,7 +99,7 @@ public class UserHolder extends RecyclerView.ViewHolder implements View.OnClickL
                 }
             });
 
-            alertDialog.show();*/
+            alertDialog.show();
         }
     }
 

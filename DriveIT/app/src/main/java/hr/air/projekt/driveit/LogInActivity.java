@@ -23,9 +23,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Logger;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,12 +31,11 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
 
 public class LogInActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser user;
-    private FirebaseAuth.AuthStateListener AuthListener;
     private boolean logedIn;
     private static final String TAG = "DriveIT";
 
@@ -58,12 +55,11 @@ public class LogInActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         firebaseAuth = firebaseAuth.getInstance();
-
+        CurrentFirebaseAuth.setFirebaseAuth(firebaseAuth);
         if(firebaseAuth.getCurrentUser() != null){
             finish();
             startActivity(new Intent(this, MainActivity.class));
         }
-        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
     }
 
 
