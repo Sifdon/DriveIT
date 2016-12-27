@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -50,6 +51,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private EditText editTextRepeatPassword;
+    private CheckBox checkBoxEmployee;
+    private CheckBox checkBoxMechanic;
+    private CheckBox checkBoxAdmin;
     private UserLab userLab;
 
     @Nullable
@@ -63,6 +67,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
         editTextRepeatPassword = (EditText) view.findViewById(R.id.add_user_repeatPassword);
         buttonAddUser = (Button) view.findViewById(R.id.add_user_button_addUser);
         buttonAddUser.setOnClickListener(this);
+        checkBoxAdmin = (CheckBox) view.findViewById(R.id.add_user_checkBoxRoleAdministrator);
+        checkBoxEmployee = (CheckBox) view.findViewById(R.id.add_user_checkBoxRoleEmployee);
+        checkBoxMechanic = (CheckBox) view.findViewById(R.id.add_user_checkBoxRoleMechanic);
         userLab = new UserLab();
         return view;
     }
@@ -84,21 +91,21 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                 u.setEmail(editTextEmail.getText().toString());
                 CurrentFirebaseAuth.getFirebaseAuth().createUserWithEmailAndPassword(u.getEmail(), p).
                         addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = task.getResult().getUser();
-                            u.setUID(user.getUid());
-                            Toast.makeText(CurrentActivity.getActivity(), "User created",
-                                    Toast.LENGTH_SHORT).show();
-                            userLab.addUser(u, p);
-                        }
-                    }
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = task.getResult().getUser();
+                                    u.setUID(user.getUid());
+                                    Toast.makeText(CurrentActivity.getActivity(), "User created",
+                                            Toast.LENGTH_SHORT).show();
+                                    userLab.addUser(u);
+                                    userLab.setRoles(user.getUid(),checkBoxMechanic.isChecked(),checkBoxAdmin.isChecked(),checkBoxEmployee.isChecked());
+                                }
+                            }
 
-                });
-            CurrentActivity.getActivity().getFragmentManager().popBackStack();
+                        });
+                CurrentActivity.getActivity().getFragmentManager().popBackStack();
             }
-            System.out.println("sc" + isValidEmail());
         }
     }
 

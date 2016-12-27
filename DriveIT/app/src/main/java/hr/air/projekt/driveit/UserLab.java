@@ -50,7 +50,7 @@ public class UserLab {
         for (Map.Entry<String, Object> entry : userMap.entrySet()) {
             //Get user map
             Map singleUser = (Map) entry.getValue();
-            User u = new User((String) singleUser.get("UID"), (String) singleUser.get("firstName"), (String) singleUser.get("lastName"), (String) singleUser.get("email"));
+            User u = new User((String) singleUser.get("uid"), (String) singleUser.get("firstName"), (String) singleUser.get("lastName"), (String) singleUser.get("email"));
             userList.add(u);
         }
         return userList;
@@ -68,12 +68,10 @@ public class UserLab {
         return user;
     }
 
-    public void addUser(final User user, String pass) {
+    public void addUser(final User user) {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         addUserReference = firebaseDatabase.getReference().child(CHILD_USER).child(user.getUID());
-        String email = user.getEmail();
-        String password = "js7cN3mp";
         addUserReference.setValue(user);
     }
 
@@ -81,6 +79,15 @@ public class UserLab {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference db = database.getReference().child(CHILD_USER).child(user.getUID());
         db.setValue(user);
+    }
+
+    public void setRoles(String uid,boolean m, boolean a, boolean u){
+        DatabaseReference dbm = FirebaseDatabase.getInstance().getReference().child("roles").child("admin").child(uid);
+        dbm.setValue(m);
+        DatabaseReference dba = FirebaseDatabase.getInstance().getReference().child("roles").child("mechanic").child(uid);
+        dba.setValue(a);
+        DatabaseReference dbu = FirebaseDatabase.getInstance().getReference().child("roles").child("user").child(uid);
+        dbu.setValue(u);
     }
 
 

@@ -39,5 +39,8 @@
     <string name="label_password">Password</string>
     <string name="label_repeatPassword">Repeat password</string>
     <string name="passwords_dont_match">Passwords do not match</string>
+    <string name="employee">Employee</string>
+    <string name="Administrator">Administrator</string>
+    <string name="mechanic">Mechanic</string>
 
 </resources>
