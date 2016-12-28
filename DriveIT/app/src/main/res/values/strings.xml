@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">DriveIT</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -42,5 +41,9 @@
     <string name="employee">Employee</string>
     <string name="Administrator">Administrator</string>
     <string name="mechanic">Mechanic</string>
-
+    <string name="manufaturer">Manufacturer</string>
+    <string name="label_model">Model</string>
+    <string name="label_registration_number">Registration number</string>
+    <string name="label_status">Status</string>
+    <string name="label_driver">Driver</string>
 </resources>

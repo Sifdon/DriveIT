@@ -41,6 +41,7 @@ import java.util.UUID;
 import butterknife.BindView;
 import hr.air.projekt.datamodule.User;
 import hr.air.projekt.driveit.Fragments.UserListFragment;
+import hr.air.projekt.driveit.Fragments.VehicleListFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
 
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements
         nm.setDependencies(this, drawer, navigationView, R.id.dynamic_group);
         nm.clearNavigationItems();
         nm.addItem(new UserListFragment());
+        nm.addItem(new VehicleListFragment());
         nm.showDefaultFragment();
     }
 

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/label_manufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/manufacturer"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/list_manufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Manufacturer"
+            android:clickable="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/label_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_model"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/list_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Model"
+            android:clickable="false" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/label_registration_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_registration_number"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/list_registration_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Registration number"
+            android:clickable="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/label_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_status"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/list_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Status"
+            android:clickable="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/label_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_driver"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/list_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Driver"
+            android:clickable="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="@string/button_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/list_button_updateVehicle" />
+
+        <Button
+            android:text="@string/button_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/list_button_deleteVehicle" />
+    </LinearLayout>
+
+</LinearLayout>

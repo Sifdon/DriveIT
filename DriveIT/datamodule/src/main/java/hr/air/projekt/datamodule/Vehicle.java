@@ -4,7 +4,7 @@ package hr.air.projekt.datamodule;
  * Created by mico on 13.12.2016..
  */
 
-public class Veichle {
+public class Vehicle {
     private String manufacturer;
     private String model;
     private String productYear;
@@ -13,16 +13,16 @@ public class Veichle {
     private String kw;
     private String chassisNumber;
     private String registrationNumber;
-    private float averageFuelConsumption;
+    private double averageFuelConsumption;
     private boolean free;
-    private int fuelStatus;
+    private double fuelStatus;
 
-    public Veichle() {
+    public Vehicle() {
     }
 
-    public Veichle(String manufacturer, String model, String productYear, String registrationDate, String registrationExpired, String kw,
-                   String chassisNumber, String registrationNumber, float averageFuelConsumption,
-                   boolean free, int fuelStatus) {
+    public Vehicle(String manufacturer, String model, String productYear, String registrationDate, String registrationExpired, String kw,
+                   String chassisNumber, String registrationNumber, double averageFuelConsumption,
+                   boolean free, double fuelStatus) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.productYear = productYear;
@@ -100,11 +100,11 @@ public class Veichle {
         this.registrationNumber = registrationNumber;
     }
 
-    public float getAverageFuelConsumption() {
+    public double getAverageFuelConsumption() {
         return averageFuelConsumption;
     }
 
-    public void setAverageFuelConsumption(float averageFuelConsumption) {
+    public void setAverageFuelConsumption(double averageFuelConsumption) {
         this.averageFuelConsumption = averageFuelConsumption;
     }
 
@@ -116,11 +116,13 @@ public class Veichle {
         this.free = free;
     }
 
-    public int getFuelStatus() {
+    public double getFuelStatus() {
         return fuelStatus;
     }
 
-    public void setFuelStatus(int fuelStatus) {
+    public void setFuelStatus(double fuelStatus) {
         this.fuelStatus = fuelStatus;
+
     }
+
 }
