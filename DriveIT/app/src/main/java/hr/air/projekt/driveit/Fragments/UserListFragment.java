@@ -97,4 +97,6 @@ public class UserListFragment extends Fragment implements NavigationItem,View.On
     public Fragment getFragment() {
         return this;
     }
+
+
 }

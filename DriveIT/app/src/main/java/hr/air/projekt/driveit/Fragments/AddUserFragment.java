@@ -109,6 +109,8 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+
+
     private boolean checkPasswordMatch() {
         String p1 = editTextPassword.getText().toString();
         String p2 = editTextRepeatPassword.getText().toString();
