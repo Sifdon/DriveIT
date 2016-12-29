@@ -5,156 +5,175 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/new_user"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
 
-        <TextView
-            android:id="@+id/add_user_label_firstName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="@string/label_firstName"
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/add_user_firstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            tools:text="First Name" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/add_user_label_lastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="@string/label_lastName"
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/add_user_lastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            tools:text="Last Name" />
-    </LinearLayout>
+            android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_user"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:shadowColor="@color/colorPrimaryDark"
+                />
 
-        <TextView
-            android:id="@+id/add_user_label_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="@string/label_email"
-            android:textAlignment="center" />
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
 
-        <EditText
-            android:id="@+id/add_user_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:inputType="textEmailAddress"
-            tools:text="Email" />
-    </LinearLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/add_user_firstName"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:contentDescription="@string/hint_email"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/label_firstName"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+            </android.support.design.widget.TextInputLayout>
 
-        <CheckBox
-            android:id="@+id/add_user_checkBoxRoleEmployee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/employee"
-            android:layout_weight="1"/>
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
 
-        <CheckBox
-            android:id="@+id/add_user_checkBoxRoleAdministrator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Administrator"
-            android:layout_weight="1"/>
+                <AutoCompleteTextView
+                    android:id="@+id/add_user_lastName"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:contentDescription="@string/hint_email"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/label_lastName"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
 
-        <CheckBox
-            android:id="@+id/add_user_checkBoxRoleMechanic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mechanic"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="@string/label_password"
-            android:textAlignment="center" />
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
 
-        <EditText
-            android:id="@+id/add_user_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:inputType="textPassword"
-            tools:text="Password" />
-    </LinearLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/add_user_email"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:contentDescription="@string/hint_email"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/label_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="@string/label_repeatPassword"
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/add_user_repeatPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:inputType="textPassword"
-            tools:text="Repeat password" />
-    </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
 
 
-    <Button
-        android:id="@+id/add_user_button_addUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_user" />
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
 
+                <AutoCompleteTextView
+                    android:id="@+id/add_user_password"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:contentDescription="@string/hint_email"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/label_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
 
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/add_user_repeatPassword"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:contentDescription="@string/label_repeatPassword"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/label_repeatPassword"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/add_user_checkBoxRoleEmployee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/employee" />
+
+                <CheckBox
+                    android:id="@+id/add_user_checkBoxRoleAdministrator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Administrator" />
+
+                <CheckBox
+                    android:id="@+id/add_user_checkBoxRoleMechanic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mechanic" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_user_button_addUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_user" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
