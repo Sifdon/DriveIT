@@ -1,13 +1,9 @@
 package hr.air.projekt.driveit.Fragments;
 
-import android.app.Activity;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
-import android.support.v4.util.CircularArray;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,26 +13,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import butterknife.BindView;
 import hr.air.projekt.datamodule.User;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.UserLab;
-
-import static android.widget.Toast.*;
 
 /**
  * Created by Stjepan on 23.12.2016..
@@ -95,8 +84,8 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = task.getResult().getUser();
-                                    u.setUID(user.getUid());
-                                    Toast.makeText(CurrentActivity.getActivity(), "User created",
+                                    u.setUid(user.getUid());
+                                    Toast.makeText(CurrentActivity.getActivity(), R.string.user_added,
                                             Toast.LENGTH_SHORT).show();
                                     userLab.addUser(u);
                                     userLab.setRoles(user.getUid(),checkBoxMechanic.isChecked(),checkBoxAdmin.isChecked(),checkBoxEmployee.isChecked());

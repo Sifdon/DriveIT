@@ -1,16 +1,9 @@
 package hr.air.projekt.driveit;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,35 +13,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import net.danlew.android.joda.JodaTimeAndroid;
 
-import butterknife.BindView;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.util.ArrayList;
+import java.util.Map;
+
 import hr.air.projekt.datamodule.User;
+import hr.air.projekt.driveit.Fragments.MalfunctionListFragment;
 import hr.air.projekt.driveit.Fragments.UserListFragment;
 import hr.air.projekt.driveit.Fragments.VehicleListFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
+import hr.air.projekt.driveit.Helper.CurrentUser;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         FragmentManager.OnBackStackChangedListener {
     private final static String TAG = "DriveIT";
+    private static final String CHILD_USER = "users";
     private static FirebaseAuth firebaseAuth;
     private DatabaseReference userReference;
 
@@ -60,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements
     FragmentManager fragmentManager;
 
 
+    private UserLab userLab =new UserLab();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +66,16 @@ public class MainActivity extends AppCompatActivity implements
         CurrentFirebaseAuth.setFirebaseAuth(firebaseAuth);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        JodaTimeAndroid.init(this);
+
+        setCurrentUser();
+
+        String date = "15:45:28, 21.01.2017.";
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm:ss, DD.MM.yyyy.");
+        DateTime d = fmt.parseDateTime(date);
+        System.out.println("Formateddate "+d.toString(fmt));
+        System.out.println("date "+d.toString());
+
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(
@@ -88,6 +95,23 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    private void setCurrentUser(){
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_USER);
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                ArrayList<User> userList = new ArrayList<User>();
+                userList = userLab.getUserList((Map<String, Object>) dataSnapshot.getValue());
+                CurrentUser.setUser(userLab.getUserById(uid,userList));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
     @Override
@@ -157,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements
         nm.clearNavigationItems();
         nm.addItem(new UserListFragment());
         nm.addItem(new VehicleListFragment());
+        nm.addItem(new MalfunctionListFragment());
         nm.showDefaultFragment();
     }
 
@@ -180,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements
             }
         }
     }
+
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

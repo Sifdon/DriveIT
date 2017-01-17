@@ -3,18 +3,16 @@ package hr.air.projekt.datamodule;
 import android.support.v4.app.FragmentActivity;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by Stjepan on 8.11.2016..
  */
 
 public class User {
-    private String UID;
+    private String uid;
     private String firstName;
     private String lastName;
-    private String Email;
+    private String email;
 
     public User(FragmentActivity activity, ArrayList<User> userList) {
     }
@@ -23,18 +21,18 @@ public class User {
     }
 
     public User(String UID, String firstName, String lastName, String email) {
-        this.UID = UID;
+        this.uid = UID;
         this.firstName = firstName;
         this.lastName = lastName;
-        Email = email;
+        this.email = email;
     }
 
-    public String getUID() {
-        return UID;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUID(String UID) {
-        this.UID = UID;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getFirstName() {
@@ -54,10 +52,10 @@ public class User {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 }

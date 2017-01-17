@@ -21,17 +21,15 @@ public class MalfunctionHolder extends RecyclerView.ViewHolder {
     private TextView textViewName;
     private TextView textViewDescription;
     private CheckBox checkBoxSolved;
-    private Context applicationContext;
     private List<Malfunction> allMalfunctions;
     private MalfunctionAdapter adapter;
     private Malfunction malfunctionData;
 
-    public MalfunctionHolder(View itemView, Context context, List<Malfunction> malfunctions, MalfunctionAdapter adapter) {
+    public MalfunctionHolder(View itemView,List<Malfunction> malfunctions, MalfunctionAdapter adapter) {
         super(itemView);
         textViewName = (TextView) itemView.findViewById(R.id.recycler_view_malfunctionName);
         textViewDescription =(TextView)itemView.findViewById(R.id.recycler_view_malfunctionDescription);
         checkBoxSolved = (CheckBox) itemView.findViewById(R.id.recycler_view_malfunctionSolved);
-        this.applicationContext = context;
         this.allMalfunctions = malfunctions;
         this.adapter = adapter;
     }

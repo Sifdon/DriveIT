@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hr.air.projekt.datamodule.User;
+import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.R;
 
 /**
@@ -20,12 +21,10 @@ import hr.air.projekt.driveit.R;
 public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
     LayoutInflater layoutInflater;
     List<User> userList = new ArrayList<User>();
-    Context applicationContext;
 
 
-    public UserAdapter(Context context, ArrayList<User> users) {
-        applicationContext = context;
-        layoutInflater = LayoutInflater.from(context);
+    public UserAdapter( ArrayList<User> users) {
+        layoutInflater = LayoutInflater.from(CurrentActivity.getActivity());
         this.userList = users;
     }
 
@@ -33,7 +32,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
     @Override
     public UserHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.list_single_user, parent,false);
-        return new UserHolder(view,applicationContext,userList,this);
+        return new UserHolder(view,userList,this);
     }
 
     @Override

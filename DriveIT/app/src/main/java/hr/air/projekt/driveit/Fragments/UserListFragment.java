@@ -55,14 +55,14 @@ public class UserListFragment extends Fragment implements NavigationItem,View.On
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         floatingActionButtonAddUser = (FloatingActionButton) view.findViewById(R.id.add_user);
         floatingActionButtonAddUser.setOnClickListener(this);
-        userListReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        userListReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<User> userArrayList;
                 userArrayList = userLab.getUserList((Map<String, Object>) dataSnapshot.getValue());
-                adapter = new UserAdapter(getActivity(), userArrayList);
+                adapter = new UserAdapter(userArrayList);
                 userRecyclerView.setAdapter(adapter);
-                userRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).color(Color.TRANSPARENT).marginResId(R.dimen.activity_horizontal_margin).build());
+                //userRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).color(Color.TRANSPARENT).marginResId(R.dimen.activity_horizontal_margin).build());
             }
 
             @Override

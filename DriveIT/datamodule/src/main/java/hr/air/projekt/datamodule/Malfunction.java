@@ -1,6 +1,11 @@
 package hr.air.projekt.datamodule;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,24 +14,24 @@ import java.util.Date;
 
 public class Malfunction {
     private String name;
-    private int malfunctionId;
+    private String malfunctionId;
     private String description;
-    private String veichle;
+    private String vehicle;
     private String reported;
-    private Date time;
+    private String time;
     private boolean type;
     private boolean solved;
 
     public Malfunction() {
     }
 
-    public Malfunction(String name, int malfunctionId, String description,
-                       String veichle, String reported,
-                       Date time, boolean type, boolean solved) {
+    public Malfunction(String name, String malfunctionId, String description,
+                       String vehicle, String reported,
+                       String time, boolean type, boolean solved) {
         this.name = name;
         this.malfunctionId = malfunctionId;
         this.description = description;
-        this.veichle = veichle;
+        this.vehicle = vehicle;
         this.reported = reported;
         this.time = time;
         this.type = type;
@@ -41,11 +46,11 @@ public class Malfunction {
         this.name = name;
     }
 
-    public int getMalfunctionId() {
+    public String getMalfunctionId() {
         return malfunctionId;
     }
 
-    public void setMalfunctionId(int malfunctionId) {
+    public void setMalfunctionId(String malfunctionId) {
         this.malfunctionId = malfunctionId;
     }
 
@@ -57,12 +62,12 @@ public class Malfunction {
         this.description = description;
     }
 
-    public String getVeichle() {
-        return veichle;
+    public String getVehicle() {
+        return vehicle;
     }
 
-    public void setVeichle(String veichle) {
-        this.veichle = veichle;
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getReported() {
@@ -73,11 +78,11 @@ public class Malfunction {
         this.reported = reported;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

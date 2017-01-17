@@ -30,14 +30,13 @@ public class UserHolder extends RecyclerView.ViewHolder implements View.OnClickL
     private EditText editTextEmail;
     private Button buttonDelete;
     private Button buttonUpdate;
-    private Context applicationContext;
     private User userData;
     private List<User> allusers;
     private UserLab userLab = new UserLab();
     private UserAdapter adapter;
 
 
-    public UserHolder(View itemView, Context context, List<User> users, UserAdapter adapter) {
+    public UserHolder(View itemView, List<User> users, UserAdapter adapter) {
         super(itemView);
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
@@ -52,7 +51,6 @@ public class UserHolder extends RecyclerView.ViewHolder implements View.OnClickL
         editTextEmail.setEnabled(false);
         buttonDelete.setOnClickListener(this);
         buttonUpdate.setOnClickListener(this);
-        this.applicationContext = context;
         this.allusers = users;
         this.adapter = adapter;
 
