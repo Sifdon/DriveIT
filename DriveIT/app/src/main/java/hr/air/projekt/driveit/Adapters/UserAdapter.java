@@ -19,9 +19,8 @@ import hr.air.projekt.driveit.R;
  */
 
 public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
-    LayoutInflater layoutInflater;
-    List<User> userList = new ArrayList<User>();
-
+    private LayoutInflater layoutInflater;
+    private List<User> userList = new ArrayList<User>();
 
     public UserAdapter( ArrayList<User> users) {
         layoutInflater = LayoutInflater.from(CurrentActivity.getActivity());
@@ -32,7 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
     @Override
     public UserHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.list_single_user, parent,false);
-        return new UserHolder(view,userList,this);
+        return new UserHolder(view,this.userList,this);
     }
 
     @Override

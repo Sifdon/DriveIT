@@ -58,4 +58,5 @@
     <string name="malfunctionCancel">Cancel</string>
     <string name="user_added">User added</string>
     <string name="malfunction_added">Malfunction added</string>
+    <string name="malfunction_updated">Malfunction updated</string>
 </resources>

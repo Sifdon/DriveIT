@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/malfunction_detail_name"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/hint_email"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/malfunctionName"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/malfunction_detail_vehicle"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/hint_email"
+                    android:editable="false"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/malfunctionVehicle"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/malfunction_detail_user"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/malfunctionUser"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/malfunction_detail_date"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/malfunctionDate"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:shadowRadius="12"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/malfunction_detail_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/malfunctionType" />
+
+                <CheckBox
+                    android:id="@+id/malfunction_detail_solved"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/malfunctionSolved" />
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/malfunction_detail_description"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/malfunctionDescription"
+                    android:inputType="text"
+                    android:shadowRadius="12"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/malfunction_detail_buttonSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/malfunctionSave" />
+
+                <Button
+                    android:id="@+id/malfunction_detail_buttonCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/malfunctionCancel" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

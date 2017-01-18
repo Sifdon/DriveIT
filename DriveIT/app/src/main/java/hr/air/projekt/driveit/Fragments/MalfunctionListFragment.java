@@ -33,6 +33,8 @@ import hr.air.projekt.driveit.R;
  */
 
 public class MalfunctionListFragment extends Fragment implements NavigationItem,View.OnClickListener{
+
+
     private static final String NAME = "Malfunctions";
     private static final String CHILD_MALFUNCTION = "malfunction";
     private int position;
@@ -55,9 +57,8 @@ public class MalfunctionListFragment extends Fragment implements NavigationItem,
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Malfunction> malfunctionList = new ArrayList<Malfunction>();
+                ArrayList<Malfunction> malfunctionList;
                 malfunctionList = malfunctionLab.getMalfunctionsList((Map<String, Object>) dataSnapshot.getValue());
-
                 adapter = new MalfunctionAdapter(malfunctionList);
                 malfunctionRecyclerView.setAdapter(adapter);
                 malfunctionRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).color(Color.TRANSPARENT).marginResId(R.dimen.activity_horizontal_margin).build());

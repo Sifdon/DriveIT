@@ -19,28 +19,28 @@ import hr.air.projekt.driveit.R;
  */
 
 public class MalfunctionAdapter extends RecyclerView.Adapter<MalfunctionHolder> {
-    LayoutInflater layoutInflater;
-    List<Malfunction> malfunctionList = new ArrayList<Malfunction>();
+    private LayoutInflater layoutInflater;
+    private List<Malfunction> malfunctionList = new ArrayList<Malfunction>();
 
     public MalfunctionAdapter(ArrayList<Malfunction> malfunctions) {
         layoutInflater = LayoutInflater.from(CurrentActivity.getActivity());
-        this.malfunctionList = malfunctions;
+        malfunctionList = malfunctions;
     }
 
     @Override
     public MalfunctionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.list_single_malfunction, parent,false);
-        return new MalfunctionHolder(view,this.malfunctionList,this);
+        return new MalfunctionHolder(view,malfunctionList,this);
     }
 
     @Override
     public void onBindViewHolder(MalfunctionHolder holder, int position) {
-        Malfunction malfunction = this.malfunctionList.get(position);
+        Malfunction malfunction = malfunctionList.get(position);
         holder.bindMalfunction(malfunction);
     }
 
     @Override
     public int getItemCount() {
-        return this.malfunctionList.size();
+        return malfunctionList.size();
     }
 }

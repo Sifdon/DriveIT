@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements
     private NavigationView navigationView;
     FragmentManager fragmentManager;
 
+    private TextView textViewCurrentUserName;
+    private TextView textViewCurrentUserEmail;
+
 
     private UserLab userLab =new UserLab();
 
@@ -67,15 +71,19 @@ public class MainActivity extends AppCompatActivity implements
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         JodaTimeAndroid.init(this);
-
         setCurrentUser();
+        textViewCurrentUserName =(TextView) findViewById(R.id.textViewCurrentUserName);
+        textViewCurrentUserEmail = (TextView) findViewById(R.id.textViewCurrentUserEmail);
 
+
+        /*
+        DATETIME PODSJETNIK
         String date = "15:45:28, 21.01.2017.";
         DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm:ss, DD.MM.yyyy.");
         DateTime d = fmt.parseDateTime(date);
         System.out.println("Formateddate "+d.toString(fmt));
         System.out.println("date "+d.toString());
-
+        */
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(
