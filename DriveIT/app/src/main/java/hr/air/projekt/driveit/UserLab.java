@@ -18,7 +18,7 @@ import hr.air.projekt.datamodule.User;
 public class UserLab {
     private static final String CHILD_USER = "users";
 
-    private ArrayList<User> allUsers = new ArrayList<User>();
+
 
     public UserLab() {
     }
@@ -26,7 +26,6 @@ public class UserLab {
     public ArrayList<User> getUserList(Map<String, Object> userMap) {
         ArrayList<User> userList = new ArrayList<User>();
         for (Map.Entry<String, Object> entry : userMap.entrySet()) {
-            //Get user map
             Map singleUser = (Map) entry.getValue();
             User u = new User((String) singleUser.get("uid"), (String) singleUser.get("firstName"), (String) singleUser.get("lastName"),
                     (String) singleUser.get("email"));
