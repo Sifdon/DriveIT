@@ -1,9 +1,11 @@
 package hr.air.projekt.driveit.Fragments;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,13 +17,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-import hr.air.projekt.datamodule.Malfunction;
 import hr.air.projekt.datamodule.Service;
-import hr.air.projekt.driveit.Adapters.MalfunctionAdapter;
 import hr.air.projekt.driveit.Adapters.ServiceAdapter;
 import hr.air.projekt.driveit.Helper.NavigationItem;
 import hr.air.projekt.driveit.R;
@@ -59,9 +60,10 @@ public class ServiceListFragment extends Fragment implements NavigationItem, Vie
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Service> serviceList;
-                serviceList = serviceLab.gerServiceList((Map<String, Object>) dataSnapshot.getValue());
+                serviceList = serviceLab.getServiceList((Map<String, Object>) dataSnapshot.getValue());
                 adapter = new ServiceAdapter(serviceList);
                 serviceRecyclerView.setAdapter(adapter);
+                serviceRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
             }
 
             @Override

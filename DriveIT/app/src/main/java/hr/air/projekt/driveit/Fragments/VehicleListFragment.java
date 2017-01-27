@@ -48,7 +48,7 @@ public class VehicleListFragment extends Fragment implements NavigationItem {
         vehicleRecyclerview = (RecyclerView) view.findViewById(R.id.vehicle_recycler_view);
         vehicleRecyclerview.setLayoutManager( new LinearLayoutManager(getActivity()));
 
-        vehicleListReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        vehicleListReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Vehicle> vehicleArrayList= new ArrayList<Vehicle>();

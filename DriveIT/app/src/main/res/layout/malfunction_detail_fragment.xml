@@ -48,6 +48,8 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/hint_email"
                     android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionVehicle"
                     android:inputType="text"
@@ -68,6 +70,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionUser"
                     android:inputType="text"
@@ -88,6 +92,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionDate"
                     android:inputType="text"
@@ -129,7 +135,7 @@
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionDescription"
                     android:inputType="text"
-                    android:shadowRadius="12"/>
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout

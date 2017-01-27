@@ -98,8 +98,8 @@ public class MalfunctionDetailFragment extends Fragment implements View.OnClickL
                     checkBoxMalfunctionType.isChecked(),
                     checkBoxMalfunctionSolved.isChecked());
             malfunctionLab.updateMalfunction(malfunction);
-            Toast.makeText(CurrentActivity.getActivity(), R.string.malfunction_updated,
-                    Toast.LENGTH_SHORT).show();
+                Toast.makeText(CurrentActivity.getActivity(), R.string.malfunction_updated,
+                        Toast.LENGTH_SHORT).show();
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
         }
         if (v == buttonMalfunctionCancel) {

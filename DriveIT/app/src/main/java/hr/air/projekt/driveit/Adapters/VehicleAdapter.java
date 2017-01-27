@@ -31,7 +31,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleHolder>{
     @Override
     public VehicleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = layoutInflater.inflate(R.layout.list_signle_vehicle,parent,false);
+        View view = layoutInflater.inflate(R.layout.list_single_vehicle,parent,false);
 
         return new VehicleHolder(view,appContext,vehicleList,this);
     }

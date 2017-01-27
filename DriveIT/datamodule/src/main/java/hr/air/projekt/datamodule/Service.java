@@ -1,17 +1,20 @@
 package hr.air.projekt.datamodule;
 
+import java.io.Serializable;
+
 /**
  * Created by Stjepan on 26.1.2017..
  */
 
-public class Service {
+public class Service implements Serializable {
     private String serviceId;
     private String date;
     private String description;
     private String dateOfNextService;
+    private String vehicleId;
     private Boolean type;
-    private Float priceOfParts;
-    private Float priceOfWork;
+    private Long priceOfParts;
+    private Long priceOfWork;
     private String mechanic;
 
     public Service() {
@@ -22,7 +25,8 @@ public class Service {
     }
 
 
-    public Service(String serviceId, String date, String description, String dateOfNextService, Boolean type, Float priceOfParts, Float priceOfWork, String mechanic) {
+    public Service(String serviceId, String date, String description, String dateOfNextService,
+                   Boolean type, Long priceOfParts, Long priceOfWork, String mechanic, String vehicleId) {
         this.serviceId = serviceId;
         this.date = date;
         this.description = description;
@@ -31,6 +35,7 @@ public class Service {
         this.priceOfParts = priceOfParts;
         this.priceOfWork = priceOfWork;
         this.mechanic = mechanic;
+        this.vehicleId = vehicleId;
     }
 
     public void setServiceId(String serviceId) {
@@ -61,6 +66,14 @@ public class Service {
         this.dateOfNextService = dateOfNextService;
     }
 
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
     public Boolean getType() {
         return type;
     }
@@ -69,19 +82,19 @@ public class Service {
         this.type = type;
     }
 
-    public Float getPriceOfParts() {
+    public Long getPriceOfParts() {
         return priceOfParts;
     }
 
-    public void setPriceOfParts(Float priceOfParts) {
+    public void setPriceOfParts(Long priceOfParts) {
         this.priceOfParts = priceOfParts;
     }
 
-    public Float getPriceOfWork() {
+    public Long getPriceOfWork() {
         return priceOfWork;
     }
 
-    public void setPriceOfWork(Float priceOfWork) {
+    public void setPriceOfWork(Long priceOfWork) {
         this.priceOfWork = priceOfWork;
     }
 

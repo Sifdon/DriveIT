@@ -67,6 +67,7 @@ public class MalfunctionLab {
         db.setValue(malfunction);
     }
 
+
     public void updateMalfunction(Malfunction malfunction) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_MALFUNCTION).child(malfunction.getMalfunctionId());
         db.setValue(malfunction);
