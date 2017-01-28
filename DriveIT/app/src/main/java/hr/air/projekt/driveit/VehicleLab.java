@@ -65,6 +65,14 @@ public class VehicleLab {
         return vehicleList;
     }
 
+    public ArrayList<String> getAllChassisNumbers(ArrayList<Vehicle> vehicles){
+        ArrayList<String> chassisNumbers = new ArrayList<String>();
+        for(Vehicle v:vehicles){
+            chassisNumbers.add(v.getChassisNumber());
+        }
+        return chassisNumbers;
+    }
+
     public void addVehicle(Vehicle malfunction){
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(malfunction);

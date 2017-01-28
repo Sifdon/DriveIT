@@ -29,7 +29,7 @@ public class ServiceLab {
                     (Long)singleService.get("priceOfParts"),
                     (Long)singleService.get("priceOfWork"),
                     (String)singleService.get("mechanic"),
-                    (String)singleService.get("vehicle"));
+                    (String)singleService.get("vehicleId"));
             serviceList.add(s);
         }
         return serviceList;
@@ -39,5 +39,11 @@ public class ServiceLab {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_SERVICE).child(s.getServiceId());
         db.setValue(s);
     }
+
+    public void addService(Service s){
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_SERVICE).child(s.getServiceId());
+        db.setValue(s);
+    }
+
 
 }

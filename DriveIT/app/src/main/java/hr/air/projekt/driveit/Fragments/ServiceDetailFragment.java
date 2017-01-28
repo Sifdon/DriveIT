@@ -52,7 +52,7 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
     private Button buttonSave;
     private Button buttonCancel;
 
-    private boolean isOkClicked;
+
     private DateTime dateOfNextService;
     private DateTimeFormatter fmt;
     private Service service;
@@ -116,7 +116,7 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
         buttonCancel = (Button) view.findViewById(R.id.service_detail_buttonCancel);
         buttonSave = (Button) view.findViewById(R.id.service_detail_buttonSave);
 
-
+        System.out.println("Vehicle: "+ service.getVehicleId());
         editTextVehicle.setText(service.getVehicleId());
         editTextDateOfService.setText(service.getDate());
         editTextDateOfNextService.setText(service.getDateOfNextService());
@@ -141,7 +141,7 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd.MM.yyyy"; // your format
+                String myFormat = "dd.MM.yyyy."; // your format
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
                 editTextDateOfNextService.setText(sdf.format(myCalendar.getTime()));
                 dateOfNextService = fmt.parseDateTime(sdf.format(myCalendar.getTime()));
