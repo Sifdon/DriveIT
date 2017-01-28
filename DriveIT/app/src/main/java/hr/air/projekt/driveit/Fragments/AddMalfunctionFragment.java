@@ -43,6 +43,7 @@ public class AddMalfunctionFragment extends Fragment implements View.OnClickList
     private TextView textViewMalfunctionTime;
     private Button buttonMalfunctionSave;
     private Button buttonMalfunctionCancel;
+
     MalfunctionLab malfunctionLab = new MalfunctionLab();
 
     @Nullable

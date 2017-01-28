@@ -1,6 +1,8 @@
 package hr.air.projekt.driveit.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -61,8 +63,12 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnCli
         editTextregistrationNumber.setText(vehicledata.getRegistrationNumber());
         if(vehicledata.isFree() == true){
             editTextfree.setText("Free");
+            editTextfree.setTextColor(Color.rgb(0,119,51));
+            editTextfree.setTypeface(null,Typeface.BOLD);
         }else {
             editTextfree.setText("Taken");
+            editTextfree.setTextColor(Color.RED);
+            editTextfree.setTypeface(null,Typeface.BOLD);
         }
     }
 

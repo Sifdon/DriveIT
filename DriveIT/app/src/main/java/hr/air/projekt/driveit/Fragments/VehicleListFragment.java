@@ -3,6 +3,7 @@ package hr.air.projekt.driveit.Fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,11 +31,12 @@ import hr.air.projekt.driveit.VehicleLab;
  * Created by mislav on 22.12.16..
  */
 
-public class VehicleListFragment extends Fragment implements NavigationItem {
+public class VehicleListFragment extends Fragment implements NavigationItem, View.OnClickListener {
     private int position;
 
     private static final String CHILD_VEHICLE = "vehicles";
     private RecyclerView vehicleRecyclerview;
+    private FloatingActionButton floatingActionButtonAddMalfunction;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference vehicleListReference;
     private VehicleAdapter adapter;
@@ -47,6 +49,9 @@ public class VehicleListFragment extends Fragment implements NavigationItem {
         vehicleListReference = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLE);
         vehicleRecyclerview = (RecyclerView) view.findViewById(R.id.vehicle_recycler_view);
         vehicleRecyclerview.setLayoutManager( new LinearLayoutManager(getActivity()));
+
+        floatingActionButtonAddMalfunction = (FloatingActionButton) view.findViewById(R.id.add_vehicle);
+        floatingActionButtonAddMalfunction.setOnClickListener(this);
 
         vehicleListReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -67,6 +72,8 @@ public class VehicleListFragment extends Fragment implements NavigationItem {
         return view;
     }
 
+
+
     @Override
     public String getItemName() {
         return "Vehicles";
@@ -86,5 +93,14 @@ public class VehicleListFragment extends Fragment implements NavigationItem {
     @Override
     public Fragment getFragment() {
         return this;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Fragment nextFrag= new AddVehicleFragment();
+        CurrentActivity.getActivity().getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, nextFrag,null)
+                .addToBackStack(null)
+                .commit();
     }
 }

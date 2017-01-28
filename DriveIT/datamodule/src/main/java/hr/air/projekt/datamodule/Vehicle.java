@@ -7,22 +7,21 @@ package hr.air.projekt.datamodule;
 public class Vehicle {
     private String manufacturer;
     private String model;
-    private String productYear;
+    private Long productYear;
     private String registrationDate;
     private String registrationExpired;
-    private String kw;
+    private Long kw;
     private String chassisNumber;
     private String registrationNumber;
-    private double averageFuelConsumption;
+    private Double averageFuelConsumption;
     private boolean free;
-    private double fuelStatus;
+    private Long fuelStatus;
 
     public Vehicle() {
     }
 
-    public Vehicle(String manufacturer, String model, String productYear, String registrationDate, String registrationExpired, String kw,
-                   String chassisNumber, String registrationNumber, double averageFuelConsumption,
-                   boolean free, double fuelStatus) {
+    public Vehicle(String manufacturer, String model, Long productYear, String registrationDate, String registrationExpired, Long kw, String chassisNumber, String registrationNumber,
+                   Double averageFuelConsumption, boolean free, Long fuelStatus) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.productYear = productYear;
@@ -52,11 +51,11 @@ public class Vehicle {
         this.model = model;
     }
 
-    public String getProductYear() {
+    public Long getProductYear() {
         return productYear;
     }
 
-    public void setProductYear(String productYear) {
+    public void setProductYear(Long productYear) {
         this.productYear = productYear;
     }
 
@@ -76,11 +75,11 @@ public class Vehicle {
         this.registrationExpired = registrationExpired;
     }
 
-    public String getKw() {
+    public Long getKw() {
         return kw;
     }
 
-    public void setKw(String kw) {
+    public void setKw(Long kw) {
         this.kw = kw;
     }
 
@@ -100,11 +99,11 @@ public class Vehicle {
         this.registrationNumber = registrationNumber;
     }
 
-    public double getAverageFuelConsumption() {
+    public Double getAverageFuelConsumption() {
         return averageFuelConsumption;
     }
 
-    public void setAverageFuelConsumption(double averageFuelConsumption) {
+    public void setAverageFuelConsumption(Double averageFuelConsumption) {
         this.averageFuelConsumption = averageFuelConsumption;
     }
 
@@ -116,13 +115,11 @@ public class Vehicle {
         this.free = free;
     }
 
-    public double getFuelStatus() {
+    public Long getFuelStatus() {
         return fuelStatus;
     }
 
-    public void setFuelStatus(double fuelStatus) {
+    public void setFuelStatus(Long fuelStatus) {
         this.fuelStatus = fuelStatus;
-
     }
-
 }

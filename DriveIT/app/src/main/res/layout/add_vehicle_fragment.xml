@@ -5,136 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Design.TextInputLayout"
-        android:id="@+id/manufacturer">
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@android:style/Widget.AutoCompleteTextView"
-            android:hint="@string/manufacturer"
-            android:id="@+id/txt_manufacturer"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:shadowRadius="12"
-            android:autoText="false"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Design.TextInputLayout"
-        android:id="@+id/model_veichle">
-
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@android:style/Widget.AutoCompleteTextView"
-            android:hint="@string/model_veichle"
-            android:id="@+id/txt_model_veichle"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:shadowRadius="12"
-            android:autoText="false"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Design.TextInputLayout"
-        android:id="@+id/production_year">
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@android:style/Widget.AutoCompleteTextView"
-            android:hint="@string/production_year"
-            android:id="@+id/txt_production_year"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:shadowRadius="12"
-            android:autoText="false"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Design.TextInputLayout"
-        android:id="@+id/kw">
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@android:style/Widget.AutoCompleteTextView"
-            android:hint="@string/kw"
-            android:id="@+id/txt_kw"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:shadowRadius="12"
-            android:autoText="false"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Design.TextInputLayout"
-        android:id="@+id/chassis_number">
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@android:style/Widget.AutoCompleteTextView"
-            android:hint="@string/chassis_number"
-            android:id="@+id/txt_chassis_number"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:shadowRadius="12"
-            android:autoText="false"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Design.TextInputLayout"
-        android:id="@+id/registration_number">
-
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@android:style/Widget.AutoCompleteTextView"
-            android:hint="@string/registration_number"
-            android:id="@+id/txt_registration_number"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:shadowRadius="12"
-            android:autoText="false"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
+    
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="192dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.Design.TextInputLayout"
-            android:id="@+id/registration_date">
+            android:id="@+id/manufacturer">
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.AutoCompleteTextView"
+                android:hint="@string/manufacturer"
+                android:id="@+id/txt_manufacturer"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:shadowRadius="12"
+                android:autoText="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Design.TextInputLayout"
+            android:id="@+id/model_veichle">
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@android:style/Widget.AutoCompleteTextView"
-                android:hint="@string/registration_date"
-                android:id="@+id/txt_registration_date"
+                android:hint="@string/model_veichle"
+                android:id="@+id/txt_model_veichle"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:shadowRadius="12"
+                android:autoText="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Design.TextInputLayout"
+            android:id="@+id/production_year">
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.AutoCompleteTextView"
+                android:hint="@string/production_year"
+                android:id="@+id/txt_production_year"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:shadowRadius="12"
+                android:autoText="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Design.TextInputLayout"
+            android:id="@+id/kw">
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.AutoCompleteTextView"
+                android:hint="@string/kw"
+                android:id="@+id/txt_kw"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:shadowRadius="12"
+                android:autoText="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Design.TextInputLayout"
+            android:id="@+id/chassis_number">
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.AutoCompleteTextView"
+                android:hint="@string/chassis_number"
+                android:id="@+id/txt_chassis_number"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -147,14 +103,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.Design.TextInputLayout"
-            android:id="@+id/registration_expired">
+            android:id="@+id/registration_number">
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@android:style/Widget.AutoCompleteTextView"
-                android:hint="@string/registration_expired"
-                android:id="@+id/txt_registration_expired"
+                android:hint="@string/registration_number"
+                android:id="@+id/txt_registration_number"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -163,55 +119,146 @@
 
         </android.support.design.widget.TextInputLayout>
 
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="190dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.Design.TextInputLayout"
-            android:id="@+id/average_fuel_consumption"
-            android:baselineAligned="false"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:weightSum="1"
-            android:gravity="left"
-            android:layout_alignParentTop="true">
+            android:weightSum="1">
 
-            <AutoCompleteTextView
-                android:layout_width="223dp"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="192dp"
                 android:layout_height="wrap_content"
-                style="@android:style/Widget.AutoCompleteTextView"
-                android:hint="@string/average_fuel_consumption"
-                android:id="@+id/txt_average_fuel_consumption"
-                android:inputType="numberDecimal"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:shadowRadius="12"
-                android:autoText="false" />
+                style="@style/Widget.Design.TextInputLayout"
+                android:id="@+id/registration_date">
 
-        </android.support.design.widget.TextInputLayout>
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:hint="@string/registration_date"
+                    android:id="@+id/txt_registration_date"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:shadowRadius="12"
+                    android:autoText="false"/>
 
-        <CheckBox
-            android:text="Free"
-            android:layout_width="96dp"
-            android:id="@+id/checkBox2"
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Design.TextInputLayout"
+                android:id="@+id/registration_expired">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:hint="@string/registration_expired"
+                    android:id="@+id/txt_registration_expired"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:shadowRadius="12"
+                    android:autoText="false"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Design.TextInputLayout"
+                android:id="@+id/average_fuel_consumption"
+                android:baselineAligned="false"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:weightSum="1"
+                android:gravity="left"
+                android:layout_alignParentTop="true">
+
+                <AutoCompleteTextView
+                    android:layout_width="117dp"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:hint="@string/average_fuel_consumption"
+                    android:id="@+id/txt_average_fuel_consumption"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:shadowRadius="12"
+                    android:autoText="false" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <CheckBox
+                android:text="Free"
+                android:layout_width="96dp"
+                android:id="@+id/checkBox2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="39dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Design.TextInputLayout"
+                android:id="@+id/fuel_sStatus"
+                android:baselineAligned="false"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:weightSum="1"
+                android:gravity="left"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+                <AutoCompleteTextView
+                    android:layout_width="117dp"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:hint="@string/average_fuel_consumption"
+                    android:id= "@+id/add_vehicle_fuel_status"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:shadowRadius="12"
+                    android:autoText="false" />
+
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+        <SeekBar
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="39dp" />
-    </RelativeLayout>
+            android:id="@+id/seekFuelstatus"
+            android:text="Fuel status"
+            android:layout_weight="0.60"
+            android:max="100"/>
 
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekFuelstatus"
-        android:text="Fuel status"
-        android:layout_weight="0.60"
-        android:max="100"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/add_vehicle_buttonSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/malfunctionSave" />
+
+            <Button
+                android:id="@+id/add_vehicle_buttonCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/malfunctionCancel" />
+        </LinearLayout>
 
 
 </LinearLayout>
