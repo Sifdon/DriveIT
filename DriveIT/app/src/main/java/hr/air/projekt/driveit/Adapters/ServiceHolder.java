@@ -36,8 +36,8 @@ public class ServiceHolder extends RecyclerView.ViewHolder implements View.OnLon
     private TextView textViewMechanic;
     private TextView textViewDate;
     private TextView textViewDescription;
+
     private Service serviceData;
-    private UserLab userLab = new UserLab();
     private String mechanicName;
 
     public ServiceHolder(View itemView, List<Service> services, ServiceAdapter adapter) {
@@ -56,7 +56,7 @@ public class ServiceHolder extends RecyclerView.ViewHolder implements View.OnLon
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, Object> user = (Map<String, Object>) dataSnapshot.getValue();
                 mechanicName = user.get("firstName") + " " + user.get("lastName");
-                textViewMechanic.setText(user.get("firstName") + " " + user.get("lastName"));
+                textViewMechanic.setText(mechanicName);
             }
 
             @Override
