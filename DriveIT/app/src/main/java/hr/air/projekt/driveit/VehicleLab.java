@@ -41,8 +41,8 @@ public class VehicleLab {
             if (singleVehicle.get("averageFuelConsumption").getClass() == Double.class) {
                 afc = (Double) singleVehicle.get("averageFuelConsumption");
             }
-            if(singleVehicle.get("averageFuelConsumption").getClass()== Long.class){
-                l = (Long)  singleVehicle.get("averageFuelConsumption");
+            if (singleVehicle.get("averageFuelConsumption").getClass() == Long.class) {
+                l = (Long) singleVehicle.get("averageFuelConsumption");
                 afc = l.doubleValue();
             }
 
@@ -82,6 +82,10 @@ public class VehicleLab {
     public void updateVehicle(Vehicle vehicle) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(vehicle);
+    }
 
+    public void deleteVehicle(Vehicle vehicle){
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
+        db.removeValue();
     }
 }

@@ -79,5 +79,8 @@
     <string name="user">User</string>
     <string name="service_added" >Service added</string>
     <string name="malfunctions">Malfunctions</string>
+    <string name="removal_question_vehicle">Do you wish to remove this vehicle?</string>
+    <string name="cancel_delete_vehicle">Cancel</string>
+    <string name="delete_vehicle">Delete</string>
 
 </resources>

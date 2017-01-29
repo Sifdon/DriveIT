@@ -1,7 +1,9 @@
 package hr.air.projekt.driveit.Adapters;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -26,7 +28,7 @@ import hr.air.projekt.driveit.VehicleLab;
  * Created by mislav on 23.12.16..
  */
 
-public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
+public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener, View.OnClickListener {
 
     /*
 
@@ -51,7 +53,7 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
     private EditText editTextregistrationNumber;
     private EditText editTextdriver;
     private EditText editTextfree;
-    private Button btnUpdate;
+    private Button buttonDelete;
     private Context appContext;
     private Vehicle vehicledata;
     private EditText editTextKmNumber; //broj kilometara
@@ -62,20 +64,25 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
     public VehicleHolder(View itemView, Context appContext, List<Vehicle> vehicles, VehicleAdapter vehicleAdapter) {
         super(itemView);
         itemView.setOnLongClickListener(this);
+
         editTextManufacturer = (EditText)itemView.findViewById(R.id.list_manufacturer);
         editTextmodel = (EditText)itemView.findViewById(R.id.list_model);
         editTextregistrationNumber = (EditText)itemView.findViewById(R.id.list_registration_number);
         //editTextdriver = (EditText) itemView.findViewById(R.id.list_driver);
         editTextfree = (EditText) itemView.findViewById(R.id.list_status);
-        btnUpdate= (Button) itemView.findViewById(R.id.list_button_updateVehicle);
         editTextManufacturer.setEnabled(false);
         editTextfree.setEnabled(false);
        // editTextdriver.setEnabled(false);
         editTextmodel.setEnabled(false);
         editTextregistrationNumber.setEnabled(false);
+
+        buttonDelete = (Button) itemView.findViewById(R.id.list_button_deleteVehicle);
+        buttonDelete.setOnClickListener(this);
+
         this.appContext = CurrentActivity.getActivity();
         this.allVehicle =vehicles;
         this.adapter = vehicleAdapter;
+
 
 
     }
@@ -111,5 +118,35 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
                 .commit();
 
         return false;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(view == buttonDelete){
+            final AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+            alertDialog.setTitle(itemView.getContext().getString(R.string.removal_question_vehicle));
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, itemView.getContext().getString(R.string.delete_vehicle),
+                    new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    vehicleLab.deleteVehicle(vehicledata);
+                    allVehicle.remove(getAdapterPosition());
+                    adapter.notifyItemRemoved(getAdapterPosition());
+                    adapter.notifyDataSetChanged();
+                    adapter.notifyItemRangeChanged(getAdapterPosition(),allVehicle.size());
+                    alertDialog.dismiss();
+                }
+            });
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, itemView.getContext().getString(R.string.cancel_delete_vehicle),
+                    new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    alertDialog.dismiss();
+                }
+            });
+
+            alertDialog.show();
+        }
     }
 }

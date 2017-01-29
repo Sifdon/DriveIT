@@ -40,7 +40,6 @@ public class UserListFragment extends Fragment implements NavigationItem,View.On
     private DatabaseReference userListReference;
     private UserAdapter adapter;
     private UserLab userLab = new UserLab();
-    private Button buttonAddUser;
     private FloatingActionButton floatingActionButtonAddUser;
     //Navigation manager
     private int position;
