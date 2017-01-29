@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.view.ViewPropertyAnimatorCompatSet;
 import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -170,4 +171,8 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         datePickerDialog.setCancelable(true);
         datePickerDialog.show();
     }
+
+    
+
+
 }

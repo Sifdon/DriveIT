@@ -45,22 +45,22 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.vehicle_list_fragment,container,false);
+        View view = inflater.inflate(R.layout.vehicle_list_fragment, container, false);
         vehicleListReference = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLE);
         vehicleRecyclerview = (RecyclerView) view.findViewById(R.id.vehicle_recycler_view);
 
         floatingActionButtonAddVehicle = (FloatingActionButton) view.findViewById(R.id.add_vehicle);
         floatingActionButtonAddVehicle.setOnClickListener(this);
 
-        vehicleRecyclerview.setLayoutManager( new LinearLayoutManager(getActivity()));
+        vehicleRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         vehicleListReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Vehicle> vehicleArrayList= new ArrayList<Vehicle>();
+                ArrayList<Vehicle> vehicleArrayList = new ArrayList<Vehicle>();
                 vehicleArrayList = vehicleLab.getVehicleList((Map<String, Object>) dataSnapshot.getValue());
 
-                adapter = new VehicleAdapter(vehicleArrayList, getActivity());
+                adapter = new VehicleAdapter(vehicleArrayList);
                 vehicleRecyclerview.setAdapter(adapter);
             }
 
@@ -70,11 +70,8 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
             }
         });
 
-
         return view;
     }
-
-
 
     @Override
     public String getItemName() {
@@ -89,7 +86,6 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
     @Override
     public void setPosition(int position) {
         this.position = position;
-
     }
 
     @Override
@@ -99,9 +95,9 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
 
     @Override
     public void onClick(View view) {
-        Fragment nextFrag= new AddVehicleFragment();
+        Fragment nextFrag = new AddVehicleFragment();
         CurrentActivity.getActivity().getFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, nextFrag,null)
+                .replace(R.id.fragment_container, nextFrag, null)
                 .addToBackStack(null)
                 .commit();
     }
