@@ -36,7 +36,7 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
 
     private static final String CHILD_VEHICLE = "vehicles";
     private RecyclerView vehicleRecyclerview;
-    private FloatingActionButton floatingActionButtonAddMalfunction;
+    private FloatingActionButton floatingActionButtonAddVehicle;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference vehicleListReference;
     private VehicleAdapter adapter;
@@ -48,10 +48,11 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
         View view = inflater.inflate(R.layout.vehicle_list_fragment,container,false);
         vehicleListReference = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLE);
         vehicleRecyclerview = (RecyclerView) view.findViewById(R.id.vehicle_recycler_view);
-        vehicleRecyclerview.setLayoutManager( new LinearLayoutManager(getActivity()));
 
-        floatingActionButtonAddMalfunction = (FloatingActionButton) view.findViewById(R.id.add_vehicle);
-        floatingActionButtonAddMalfunction.setOnClickListener(this);
+        floatingActionButtonAddVehicle = (FloatingActionButton) view.findViewById(R.id.add_vehicle);
+        floatingActionButtonAddVehicle.setOnClickListener(this);
+
+        vehicleRecyclerview.setLayoutManager( new LinearLayoutManager(getActivity()));
 
         vehicleListReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,6 +69,7 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
 
             }
         });
+
 
         return view;
     }

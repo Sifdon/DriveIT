@@ -2,10 +2,8 @@ package hr.air.projekt.driveit.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,20 +20,20 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import hr.air.projekt.datamodule.Vehicle;
-import hr.air.projekt.driveit.Adapters.VehicleAdapter;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.VehicleLab;
 
 /**
- * Created by mico on 28.1.2017..
+ * Created by mico on 29.1.2017..
  */
 
-public class AddVehicleFragment extends Fragment implements View.OnClickListener {
+public class VehicleDetailFragment extends Fragment implements View.OnClickListener{
+
+    private static final String VEHICLE_DETAILS = "VehicleDetails";
 
     private EditText editTextManufacturerName;
     private EditText editTextmodelName;
@@ -46,8 +44,7 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
     private EditText editTextRegistrationDate;
     private EditText editTextRegistrationExpired;
     private EditText editTextAverageFuelConsumpt;
-    private EditText editTextFuelStatus;
-    private SeekBar seekBarAverageFuel;
+    private SeekBar seekBarfuelStatus;
     private CheckBox checkBoxisFree;
     private Button buttonVehicleCancel;
     private Button buttonVehicleSave;
@@ -55,42 +52,22 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
     private DateTime registrationDate;
     private DateTimeFormatter dateTimeFormatter;
     private EditText editTextkmNumber;
-    VehicleLab  vehicleLab = new VehicleLab();
+    private Vehicle vehicle;
+
+    VehicleLab vehicleLab = new VehicleLab();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.add_vehicle_fragment, container, false);
-
-        editTextManufacturerName = (EditText) view.findViewById(R.id.txt_manufacturer);
-        editTextmodelName = (EditText) view.findViewById(R.id.txt_model_veichle);
-        editTextProductYear = (EditText) view.findViewById(R.id.txt_production_year);
-        editTextKW = (EditText) view.findViewById(R.id.txt_kw);
-        editTextChassisNumber = (EditText) view.findViewById(R.id.txt_chassis_number);
-        editTextregistrationNumber = (EditText) view.findViewById(R.id.txt_registration_number);
-        editTextRegistrationDate = (EditText) view.findViewById(R.id.txt_registration_date);
-        editTextRegistrationExpired = (EditText) view.findViewById(R.id.txt_registration_expired);
-        editTextAverageFuelConsumpt = (EditText) view.findViewById(R.id.txt_average_fuel_consumption);
-        checkBoxisFree = (CheckBox) view.findViewById(R.id.checkBox2);
-        buttonVehicleSave = (Button) view.findViewById(R.id.add_vehicle_buttonSave);
-        buttonVehicleCancel = (Button) view.findViewById(R.id.add_vehicle_buttonCancel);
-        seekBarAverageFuel = (SeekBar) view.findViewById(R.id.seekFuelstatus);
-        editTextkmNumber =(EditText) view.findViewById(R.id.txt_kmNumber);
-
-        buttonVehicleCancel.setOnClickListener(this);
-        buttonVehicleSave.setOnClickListener(this);
-        editTextRegistrationExpired.setOnClickListener(this);
-        editTextRegistrationDate.setOnClickListener(this);
-
-
+        View view = inflater.inflate(R.layout.vehicle_detail_fragment,container,false);
+        Bundle bundle = getArguments();
+        vehicle = (Vehicle) bundle.getSerializable(VEHICLE_DETAILS);
+        bindViews(view);
 
         dateTimeFormatter = DateTimeFormat.forPattern("DD.MM.yyyy.");
-        DateTime d = DateTime.now();
-        registrationDate = d;
-        registrationExpiredDate = d;
-
-
+        registrationDate = dateTimeFormatter.parseDateTime(vehicle.getRegistrationDate());
+        registrationExpiredDate = dateTimeFormatter.parseDateTime(vehicle.getRegistrationExpired());
 
         return view;
     }
@@ -109,27 +86,79 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
         }
         else if(view == buttonVehicleSave){
-
-            Vehicle vehicle = new Vehicle(
-                    editTextManufacturerName.getText().toString(),
-                    editTextmodelName.getText().toString(),
-                    (Long.parseLong(editTextProductYear.getText().toString())),
-                    editTextRegistrationDate.getText().toString(),
-                    editTextRegistrationExpired.getText().toString(),
-                    (Long.parseLong(editTextKW.getText().toString())),
-                    editTextChassisNumber.getText().toString(),
-                    editTextregistrationNumber.getText().toString(),
-                    (Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())),
-                    checkBoxisFree.isChecked(),
-                    Long.valueOf(seekBarAverageFuel.getProgress()),
-                    Long.parseLong(editTextkmNumber.getText().toString()));
-            vehicleLab.addVehicle(vehicle);
-            Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_added,Toast.LENGTH_SHORT).show();
+            updateVehicleData();
+            vehicleLab.updateVehicle(vehicle);
+            Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_updated, Toast.LENGTH_SHORT).show();
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
         }
 
     }
 
+    private void updateVehicleData(){
+
+        vehicle.setManufacturer(editTextManufacturerName.getText().toString());
+        vehicle.setModel(editTextmodelName.getText().toString());
+        vehicle.setProductYear((Long.parseLong(editTextProductYear.getText().toString())));
+        vehicle.setRegistrationDate(editTextRegistrationDate.getText().toString());
+        vehicle.setRegistrationExpired(editTextRegistrationExpired.getText().toString());
+        vehicle.setKw((Long.parseLong(editTextKW.getText().toString())));
+        vehicle.setChassisNumber(editTextChassisNumber.getText().toString());
+        vehicle.setRegistrationNumber(editTextregistrationNumber.getText().toString());
+        vehicle.setAverageFuelConsumption((Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())));
+        vehicle.setFree(checkBoxisFree.isChecked());
+        vehicle.setFuelStatus(Long.valueOf(seekBarfuelStatus.getProgress()));
+        vehicle.setKmNumber(Long.parseLong(editTextkmNumber.getText().toString()));
+
+
+
+
+    }
+
+    private void bindViews(View view){
+
+        editTextManufacturerName = (EditText) view.findViewById(R.id.txt_vehicle_detail_manufacturer);
+        editTextmodelName = (EditText) view.findViewById(R.id.txt_detail_vehicle_model);
+        editTextProductYear = (EditText) view.findViewById(R.id.txt_vehicle_detail_production_year);
+        editTextKW = (EditText) view.findViewById(R.id.txt_vehicle_detail_kw);
+        editTextChassisNumber = (EditText) view.findViewById(R.id.txt_vehicle_detail_chassis_number);
+        editTextregistrationNumber = (EditText) view.findViewById(R.id.txt_vehicle_detail_registration_number);
+        editTextRegistrationDate = (EditText) view.findViewById(R.id.txt_vehicle_detail_registration_date);
+        editTextRegistrationExpired = (EditText) view.findViewById(R.id.txt_vehicle_detail_registration_expired);
+        editTextAverageFuelConsumpt = (EditText) view.findViewById(R.id.txt_vehicle_detail_average_fuel_consumption);
+        checkBoxisFree = (CheckBox) view.findViewById(R.id.chb_vehicle_detail_isFree);
+        buttonVehicleSave = (Button) view.findViewById(R.id.vehicle_detail_buttonSave);
+        buttonVehicleCancel = (Button) view.findViewById(R.id.vehicle_detail_buttonCancel);
+        seekBarfuelStatus = (SeekBar) view.findViewById(R.id.vehicle_detail_seekFuelstatus);
+        editTextkmNumber =(EditText) view.findViewById(R.id.txt_vehicle_detail_kmNumber);
+
+        editTextManufacturerName.setText(vehicle.getManufacturer());
+        editTextmodelName.setText(vehicle.getModel());
+        editTextProductYear.setText(vehicle.getProductYear().toString());
+        editTextKW.setText(vehicle.getKw().toString());
+        editTextChassisNumber.setText(vehicle.getChassisNumber());
+        editTextregistrationNumber.setText(vehicle.getRegistrationNumber());
+        editTextRegistrationDate.setText(vehicle.getRegistrationDate());
+        editTextRegistrationExpired.setText(vehicle.getRegistrationExpired());
+
+        //taj ne radi.. edit
+        editTextAverageFuelConsumpt.setText(vehicle.getAverageFuelConsumption().toString());
+        checkBoxisFree.setChecked(vehicle.isFree());
+        seekBarfuelStatus.setProgress(Integer.valueOf(vehicle.getFuelStatus().toString()));
+        editTextkmNumber.setText(vehicle.getKmNumber().toString());
+
+        //listeneri
+        buttonVehicleCancel.setOnClickListener(this);
+        buttonVehicleSave.setOnClickListener(this);
+        editTextRegistrationExpired.setOnClickListener(this);
+        editTextRegistrationDate.setOnClickListener(this);
+
+
+
+
+
+
+
+    }
     private void showDatePickerDate(){
         final Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {

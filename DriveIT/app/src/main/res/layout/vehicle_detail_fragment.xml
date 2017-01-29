@@ -19,13 +19,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/manufacturer">
+                android:id="@+id/vehicle_detail_manufacturer">
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/manufacturer"
-                    android:id="@+id/txt_manufacturer"
+                    android:id="@+id/txt_vehicle_detail_manufacturer"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -37,14 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/model_veichle">
+                android:id="@+id/vehicle_detail_model">
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/model_veichle"
-                    android:id="@+id/txt_model_veichle"
+                    android:id="@+id/txt_detail_vehicle_model"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -56,13 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/production_year">
+                android:id="@+id/vehicle_detail_production_year">
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/production_year"
-                    android:id="@+id/txt_production_year"
+                    android:id="@+id/txt_vehicle_detail_production_year"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -74,13 +74,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/kw">
+                android:id="@+id/vehicle_detail_kw">
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/kw"
-                    android:id="@+id/txt_kw"
+                    android:id="@+id/txt_vehicle_detail_kw"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -92,13 +92,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/chassis_number">
+                android:id="@+id/vehicle_detail_chassis_number">
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/chassis_number"
-                    android:id="@+id/txt_chassis_number"
+                    android:id="@+id/txt_vehicle_detail_chassis_number"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -111,14 +111,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/registration_number">
+                android:id="@+id/vehicle_detail_registration_number">
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/registration_number"
-                    android:id="@+id/txt_registration_number"
+                    android:id="@+id/txt_vehicle_detail_registration_number"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -131,14 +131,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/kmNumber">
+                android:id="@+id/vehicle_detail_kmNumber">
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/km_number"
-                    android:id="@+id/txt_kmNumber"
+                    android:id="@+id/txt_vehicle_detail_kmNumber"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -156,7 +156,7 @@
                     android:layout_width="192dp"
                     android:layout_height="wrap_content"
                     style="@style/Widget.Design.TextInputLayout"
-                    android:id="@+id/registration_date"
+                    android:id="@+id/vehicle_detail_registration_date"
                     android:touchscreenBlocksFocus="false">
 
                     <AutoCompleteTextView
@@ -164,7 +164,7 @@
                         android:layout_height="wrap_content"
                         style="@android:style/Widget.AutoCompleteTextView"
                         android:hint="@string/registration_date"
-                        android:id="@+id/txt_registration_date"
+                        android:id="@+id/txt_vehicle_detail_registration_date"
                         android:inputType="text"
                         android:maxLines="1"
                         android:clickable="false"
@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.Design.TextInputLayout"
-                    android:id="@+id/registration_expired"
+                    android:id="@+id/vehicle_detail_registration_expired"
                     android:touchscreenBlocksFocus="false">
 
                     <AutoCompleteTextView
@@ -190,7 +190,7 @@
                         android:layout_height="wrap_content"
                         style="@android:style/Widget.AutoCompleteTextView"
                         android:hint="@string/registration_expired"
-                        android:id="@+id/txt_registration_expired"
+                        android:id="@+id/txt_vehicle_detail_registration_expired"
                         android:inputType="text"
                         android:maxLines="1"
                         android:clickable="false"
@@ -226,7 +226,7 @@
                         android:layout_height="wrap_content"
                         style="@android:style/Widget.AutoCompleteTextView"
                         android:hint="@string/average_fuel_consumption"
-                        android:id="@+id/txt_average_fuel_consumption"
+                        android:id="@+id/txt_vehicle_detail_average_fuel_consumption"
                         android:inputType="numberDecimal"
                         android:maxLines="1"
                         android:singleLine="true"
@@ -238,7 +238,7 @@
                 <CheckBox
                     android:text="Free"
                     android:layout_width="96dp"
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/chb_vehicle_detail_isFree"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_centerVertical="true"
@@ -252,7 +252,7 @@
             <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/seekFuelstatus"
+                android:id="@+id/vehicle_detail_seekFuelstatus"
                 android:text="Fuel status"
                 android:layout_weight="0.60"
                 android:max="100"/>
@@ -262,14 +262,14 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/add_vehicle_buttonSave"
+                    android:id="@+id/vehicle_detail_buttonSave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/malfunctionSave" />
 
                 <Button
-                    android:id="@+id/add_vehicle_buttonCancel"
+                    android:id="@+id/vehicle_detail_buttonCancel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

@@ -67,4 +67,7 @@
     <string name="save">Save</string>
     <string name="service_updated">Service updated!</string>
     <string name="vehicle">Vehicle</string>
+    <string name="km_number">KM number</string>
+    <string name="vehicle_updated">Vehicle updated!</string>
+    <string name="vehicle_added">Vehicle added</string>
 </resources>

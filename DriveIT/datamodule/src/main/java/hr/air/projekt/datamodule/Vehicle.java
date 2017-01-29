@@ -1,10 +1,12 @@
 package hr.air.projekt.datamodule;
 
+import java.io.Serializable;
+
 /**
  * Created by mico on 13.12.2016..
  */
 
-public class Vehicle {
+public class Vehicle implements Serializable{
     private String manufacturer;
     private String model;
     private Long productYear;
@@ -16,12 +18,13 @@ public class Vehicle {
     private Double averageFuelConsumption;
     private boolean free;
     private Long fuelStatus;
+    private Long KmNumber;
 
     public Vehicle() {
     }
 
     public Vehicle(String manufacturer, String model, Long productYear, String registrationDate, String registrationExpired, Long kw, String chassisNumber, String registrationNumber,
-                   Double averageFuelConsumption, boolean free, Long fuelStatus) {
+                   Double averageFuelConsumption, boolean free, Long fuelStatus, Long kmNumber) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.productYear = productYear;
@@ -33,6 +36,15 @@ public class Vehicle {
         this.averageFuelConsumption = averageFuelConsumption;
         this.free = free;
         this.fuelStatus = fuelStatus;
+        this.KmNumber = kmNumber;
+    }
+
+    public Long getKmNumber() {
+        return KmNumber;
+    }
+
+    public void setKmNumber(Long kmNumber) {
+        KmNumber = kmNumber;
     }
 
     public String getManufacturer() {
