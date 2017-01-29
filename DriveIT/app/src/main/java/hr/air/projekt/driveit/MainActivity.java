@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements
         textViewCurrentUserEmail = (TextView) findViewById(R.id.textViewCurrentUserEmail);
 
 
+
         /*
         DATETIME PODSJETNIK
         String date = "15:45:28, 21.01.2017.";

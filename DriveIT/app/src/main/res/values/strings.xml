@@ -68,5 +68,6 @@
     <string name="service_updated">Service updated!</string>
     <string name="vehicle">Vehicle</string>
     <string name="choose_date">Pick a date</string>
-    <string name="service_added" />
+    <string name="service_added" >Service added</string>
+    <string name="malfunctions">Malfunctions</string>
 </resources>
