@@ -68,9 +68,14 @@
     <string name="service_updated">Service updated!</string>
     <string name="vehicle">Vehicle</string>
     <string name="choose_date">Pick a date</string>
+<<<<<<< HEAD
     <string name="service_added" />
     <string name="open">Open</string>
     <string name="startDate">Start date</string>
     <string name="endDate">End date</string>
     <string name="user">User</string>
+=======
+    <string name="service_added" >Service added</string>
+    <string name="malfunctions">Malfunctions</string>
+>>>>>>> 4b1e48cf442f962344f1d3cf57eeb92c8274fafb
 </resources>
