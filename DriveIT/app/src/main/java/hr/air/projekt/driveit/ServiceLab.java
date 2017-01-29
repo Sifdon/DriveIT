@@ -21,13 +21,36 @@ public class ServiceLab {
         ArrayList<Service> serviceList = new ArrayList<Service>();
         for (Map.Entry<String, Object> entry : serviceMap.entrySet()) {
             Map singleService = (Map) entry.getValue();
+
+            //double long conversion problem
+            Double priceOfParts = null;
+            Double priceOfWork = null;
+            Long l;
+            if (singleService.get("priceOfParts").getClass() == Double.class) {
+                priceOfParts = (Double) singleService.get("priceOfParts");
+            }
+            if(singleService.get("priceOfParts").getClass()== Long.class){
+                l = (Long)  singleService.get("priceOfParts");
+                priceOfParts = l.doubleValue();
+            }
+
+            if (singleService.get("priceOfWork").getClass() == Double.class) {
+                priceOfWork = (Double) singleService.get("priceOfWork");
+            }
+            if(singleService.get("priceOfWork").getClass()== Long.class){
+                l = (Long)  singleService.get("priceOfWork");
+                priceOfWork = l.doubleValue();
+            }
+
+
+
             Service s = new Service((String)singleService.get("serviceId"),
                     (String)singleService.get("date"),
                     (String)singleService.get("description"),
                     (String)singleService.get("dateOfNextService"),
                     (Boolean)singleService.get("type"),
-                    (Long)singleService.get("priceOfParts"),
-                    (Long)singleService.get("priceOfWork"),
+                    priceOfParts,
+                    priceOfWork,
                     (String)singleService.get("mechanic"),
                     (String)singleService.get("vehicleId"));
             serviceList.add(s);

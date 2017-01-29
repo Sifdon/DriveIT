@@ -109,7 +109,6 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
         }
         else if(view == buttonVehicleSave){
-
             Vehicle vehicle = new Vehicle(
                     editTextManufacturerName.getText().toString(),
                     editTextmodelName.getText().toString(),

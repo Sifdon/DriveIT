@@ -13,8 +13,8 @@ public class Service implements Serializable {
     private String dateOfNextService;
     private String vehicleId;
     private Boolean type;
-    private Long priceOfParts;
-    private Long priceOfWork;
+    private Double priceOfParts;
+    private Double priceOfWork;
     private String mechanic;
 
     public Service() {
@@ -26,7 +26,7 @@ public class Service implements Serializable {
 
 
     public Service(String serviceId, String date, String description, String dateOfNextService,
-                   Boolean type, Long priceOfParts, Long priceOfWork, String mechanic, String vehicleId) {
+                   Boolean type, Double priceOfParts, Double priceOfWork, String mechanic, String vehicleId) {
         this.serviceId = serviceId;
         this.date = date;
         this.description = description;
@@ -82,19 +82,19 @@ public class Service implements Serializable {
         this.type = type;
     }
 
-    public Long getPriceOfParts() {
+    public Double getPriceOfParts() {
         return priceOfParts;
     }
 
-    public void setPriceOfParts(Long priceOfParts) {
+    public void setPriceOfParts(Double priceOfParts) {
         this.priceOfParts = priceOfParts;
     }
 
-    public Long getPriceOfWork() {
+    public Double getPriceOfWork() {
         return priceOfWork;
     }
 
-    public void setPriceOfWork(Long priceOfWork) {
+    public void setPriceOfWork(Double priceOfWork) {
         this.priceOfWork = priceOfWork;
     }
 

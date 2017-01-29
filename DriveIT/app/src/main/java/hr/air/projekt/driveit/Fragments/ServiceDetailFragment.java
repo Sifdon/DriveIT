@@ -99,8 +99,8 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
 
     private void updateServiceData(){
         service.setDescription(editTextDescription.getText().toString());
-        service.setPriceOfParts(Long.parseLong(editTextPriceOfParts.getText().toString()));
-        service.setPriceOfWork(Long.parseLong(editTextPriceOfWork.getText().toString()));
+        service.setPriceOfParts(Double.parseDouble(editTextPriceOfParts.getText().toString()));
+        service.setPriceOfWork(Double.parseDouble(editTextPriceOfWork.getText().toString()));
         service.setType(checkBoxRegularService.isChecked());
     }
 

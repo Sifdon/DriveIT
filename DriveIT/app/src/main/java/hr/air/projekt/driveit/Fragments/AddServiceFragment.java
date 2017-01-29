@@ -182,8 +182,8 @@ public class AddServiceFragment extends Fragment implements View.OnClickListener
         service.setDate(editTextDateOfService.getText().toString());
         service.setDescription(editTextDescription.getText().toString());
         service.setType(checkBoxRegularService.isChecked());
-        service.setPriceOfParts(Long.parseLong(editTextPriceOfParts.getText().toString()));
-        service.setPriceOfWork(Long.parseLong(editTextPriceOfWork.getText().toString()));
+        service.setPriceOfParts(Double.parseDouble(editTextPriceOfParts.getText().toString()));
+        service.setPriceOfWork(Double.parseDouble(editTextPriceOfWork.getText().toString()));
         service.setMechanic(CurrentUser.getUser().getUid());
     }
 

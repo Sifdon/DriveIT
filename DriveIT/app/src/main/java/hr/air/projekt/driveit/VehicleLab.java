@@ -35,7 +35,16 @@ public class VehicleLab {
         ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
         for (Map.Entry<String, Object> entry : vehicleMap.entrySet()) {
             Map singleVehicle = (Map) entry.getValue();
-
+            //double long conversion problem
+            Double afc = null;
+            Long l;
+            if (singleVehicle.get("averageFuelConsumption").getClass() == Double.class) {
+                afc = (Double) singleVehicle.get("averageFuelConsumption");
+            }
+            if(singleVehicle.get("averageFuelConsumption").getClass()== Long.class){
+                l = (Long)  singleVehicle.get("averageFuelConsumption");
+                afc = l.doubleValue();
+            }
 
             Vehicle v = new Vehicle(
                     (String) singleVehicle.get("manufacturer"),
@@ -46,7 +55,7 @@ public class VehicleLab {
                     (Long) singleVehicle.get("kw"),
                     (String) singleVehicle.get("chassisNumber"),
                     (String) singleVehicle.get("registrationNumber"),
-                    (Double) singleVehicle.get("averageFuelConsum"),
+                    afc,
                     (Boolean) singleVehicle.get("free"),
                     (Long) singleVehicle.get("fuelStatus"),
                     (Long) singleVehicle.get("kmNumber"));
@@ -56,13 +65,15 @@ public class VehicleLab {
         }
         return vehicleList;
     }
-    public ArrayList<String> getAllChassisNumbers (ArrayList < Vehicle > vehicles) {
+
+    public ArrayList<String> getAllChassisNumbers(ArrayList<Vehicle> vehicles) {
         ArrayList<String> chassisNumbers = new ArrayList<String>();
         for (Vehicle v : vehicles) {
             chassisNumbers.add(v.getChassisNumber());
         }
         return chassisNumbers;
     }
+
     public void addVehicle(Vehicle vehicle) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(vehicle);
