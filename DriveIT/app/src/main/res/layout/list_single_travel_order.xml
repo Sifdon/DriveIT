@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:touchscreenBlocksFocus="false">
+
+            <AutoCompleteTextView
+                android:id="@+id/recycler_view_travelOrderVehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/vehicle"
+                android:background="@android:color/transparent"
+                android:textAlignment="center"
+                tools:text="Vehicle" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Switch
+            android:id="@+id/recycler_view_travelOrderIsOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:clickable="false"
+            android:text="@string/open"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:touchscreenBlocksFocus="false">
+
+            <AutoCompleteTextView
+                android:id="@+id/recycler_view_travelOrderStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/startDate"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:textAlignment="center"
+                tools:text="01.01.2016." />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:touchscreenBlocksFocus="false">
+
+            <AutoCompleteTextView
+                android:id="@+id/recycler_view_travelOrderEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/endDate"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:textAlignment="center"
+                tools:text="01.02.2016." />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.Design.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:touchscreenBlocksFocus="false">
+
+        <AutoCompleteTextView
+            android:id="@+id/recycler_view_travelOrderUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/user"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            tools:text="Mario Maric" />
+    </android.support.design.widget.TextInputLayout>
+
+
+</LinearLayout>

@@ -35,6 +35,7 @@ import java.util.Map;
 import hr.air.projekt.datamodule.User;
 import hr.air.projekt.driveit.Fragments.MalfunctionListFragment;
 import hr.air.projekt.driveit.Fragments.ServiceListFragment;
+import hr.air.projekt.driveit.Fragments.TravelOrderListFragment;
 import hr.air.projekt.driveit.Fragments.UserListFragment;
 import hr.air.projekt.driveit.Fragments.VehicleListFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements
         setCurrentUser();
         textViewCurrentUserName =(TextView) findViewById(R.id.textViewCurrentUserName);
         textViewCurrentUserEmail = (TextView) findViewById(R.id.textViewCurrentUserEmail);
+
 
 
         /*
@@ -192,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements
         nm.addItem(new VehicleListFragment());
         nm.addItem(new MalfunctionListFragment());
         nm.addItem(new ServiceListFragment());
+        nm.addItem(new TravelOrderListFragment());
         nm.showDefaultFragment();
     }
 

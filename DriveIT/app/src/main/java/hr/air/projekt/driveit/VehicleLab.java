@@ -15,9 +15,9 @@ import hr.air.projekt.datamodule.Vehicle;
  */
 
 public class VehicleLab {
-    private static final String CHILD_VEHICLES ="vehicles";
+    private static final String CHILD_VEHICLES = "vehicles";
     private Vehicle vehicle;
-    private Map<String,Object> vehicles;
+    private Map<String, Object> vehicles;
     private DatabaseReference updateVehicleRef, deleteVehicleRef;
     private FirebaseDatabase firebaseDatabase;
 
@@ -25,19 +25,20 @@ public class VehicleLab {
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
-    public Map<String, Object> getAllVehicles (final DataSnapshot snapshot){
+    public Map<String, Object> getAllVehicles(final DataSnapshot snapshot) {
         vehicles = (Map<String, Object>) snapshot.getValue();
         return vehicles;
     }
-    public ArrayList<Vehicle> getVehicleList(Map<String,Object> vehicleMap){
+
+    public ArrayList<Vehicle> getVehicleList(Map<String, Object> vehicleMap) {
 
         ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
-        for (Map.Entry<String,Object> entry:vehicleMap.entrySet()){
-            Map singleVehicle = (Map)entry.getValue();
+        for (Map.Entry<String, Object> entry : vehicleMap.entrySet()) {
+            Map singleVehicle = (Map) entry.getValue();
 
 
             Vehicle v = new Vehicle(
-                    (String)singleVehicle.get("manufacturer"),
+                    (String) singleVehicle.get("manufacturer"),
                     (String) singleVehicle.get("model"),
                     (Long) singleVehicle.get("productYear"),
                     (String) singleVehicle.get("registrationDate"),
@@ -55,19 +56,21 @@ public class VehicleLab {
         }
         return vehicleList;
     }
-
-    public void addVehicle(Vehicle vehicle){
+    public ArrayList<String> getAllChassisNumbers (ArrayList < Vehicle > vehicles) {
+        ArrayList<String> chassisNumbers = new ArrayList<String>();
+        for (Vehicle v : vehicles) {
+            chassisNumbers.add(v.getChassisNumber());
+        }
+        return chassisNumbers;
+    }
+    public void addVehicle(Vehicle vehicle) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(vehicle);
     }
 
-    public void updateVehicle(Vehicle vehicle){
+    public void updateVehicle(Vehicle vehicle) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(vehicle);
+
     }
-
-
-
-
-
 }

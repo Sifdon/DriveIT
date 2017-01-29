@@ -24,6 +24,7 @@ import java.util.Map;
 
 import hr.air.projekt.datamodule.Service;
 import hr.air.projekt.driveit.Adapters.ServiceAdapter;
+import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.NavigationItem;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.ServiceLab;
@@ -77,7 +78,13 @@ public class ServiceListFragment extends Fragment implements NavigationItem, Vie
 
     @Override
     public void onClick(View v) {
-
+        if(v==floatingActionButtonAddService){
+            Fragment nextFrag = new AddServiceFragment();
+            CurrentActivity.getActivity().getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, nextFrag,null)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     @Override

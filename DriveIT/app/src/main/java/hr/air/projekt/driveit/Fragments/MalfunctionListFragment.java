@@ -35,8 +35,8 @@ import hr.air.projekt.driveit.R;
 public class MalfunctionListFragment extends Fragment implements NavigationItem,View.OnClickListener{
 
 
-    private static final String NAME = "Malfunctions";
-    private static final String CHILD_MALFUNCTION = "malfunction";
+    private static final String NAME="Malfunctions";
+    private  final String CHILD_MALFUNCTION = "malfunction";
     private int position;
     private RecyclerView malfunctionRecyclerView;
     private FloatingActionButton floatingActionButtonAddMalfunction;
