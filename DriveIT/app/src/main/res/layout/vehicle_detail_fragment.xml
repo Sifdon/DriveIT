@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:weightSum="1">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,136 +15,140 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <android.support.design.widget.TextInputLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="8pt"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="8"
+                android:shadowDy="8"
+                android:shadowRadius="10"
+                android:text="@string/update_vehicle"
+                android:textAlignment="center"
+                android:textColor="#406090"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vehicle_detail_manufacturer"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_manufacturer">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
-                    android:hint="@string/manufacturer"
                     android:id="@+id/txt_vehicle_detail_manufacturer"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/manufacturer"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/vehicle_detail_model"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_model">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
-                    android:hint="@string/model_veichle"
                     android:id="@+id/txt_detail_vehicle_model"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/model_veichle"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/vehicle_detail_production_year"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_production_year">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
-                    android:hint="@string/production_year"
                     android:id="@+id/txt_vehicle_detail_production_year"
-                    android:inputType="text"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/production_year"
+                    android:inputType="number"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/vehicle_detail_kw"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_kw">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
-                    android:hint="@string/kw"
                     android:id="@+id/txt_vehicle_detail_kw"
-                    android:inputType="text"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/kw"
+                    android:inputType="number"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/vehicle_detail_chassis_number"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_chassis_number">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
-                    android:hint="@string/chassis_number"
                     android:id="@+id/txt_vehicle_detail_chassis_number"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/chassis_number"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/vehicle_detail_registration_number"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_registration_number">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
-                    android:hint="@string/registration_number"
                     android:id="@+id/txt_vehicle_detail_registration_number"
+                    style="@android:style/Widget.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/registration_number"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/vehicle_detail_kmNumber"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/vehicle_detail_kmNumber">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
+                    android:id="@+id/txt_vehicle_detail_kmNumber"
+                    style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@android:style/Widget.AutoCompleteTextView"
                     android:hint="@string/km_number"
-                    android:id="@+id/txt_vehicle_detail_kmNumber"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:shadowRadius="12"
-                    android:autoText="false"/>
+                    android:shadowRadius="12" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -153,54 +158,50 @@
                 android:weightSum="1">
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/vehicle_detail_registration_date"
+                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="192dp"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.Design.TextInputLayout"
-                    android:id="@+id/vehicle_detail_registration_date"
                     android:touchscreenBlocksFocus="false">
 
                     <AutoCompleteTextView
+                        android:id="@+id/txt_vehicle_detail_registration_date"
+                        style="@android:style/Widget.AutoCompleteTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@android:style/Widget.AutoCompleteTextView"
-                        android:hint="@string/registration_date"
-                        android:id="@+id/txt_vehicle_detail_registration_date"
-                        android:inputType="text"
-                        android:maxLines="1"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        tools:text="01.01.2017."
-                        android:singleLine="true"
+                        android:hint="@string/registration_date"
+                        android:inputType="date"
+                        android:maxLines="1"
                         android:shadowRadius="12"
-                        android:autoText="false"/>
+                        tools:text="01.01.2017." />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/vehicle_detail_registration_expired"
+                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.Design.TextInputLayout"
-                    android:id="@+id/vehicle_detail_registration_expired"
                     android:touchscreenBlocksFocus="false">
 
                     <AutoCompleteTextView
+                        android:id="@+id/txt_vehicle_detail_registration_expired"
+                        style="@android:style/Widget.AutoCompleteTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@android:style/Widget.AutoCompleteTextView"
-                        android:hint="@string/registration_expired"
-                        android:id="@+id/txt_vehicle_detail_registration_expired"
-                        android:inputType="text"
-                        android:maxLines="1"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        tools:text="01.01.2017."
-                        android:singleLine="true"
+                        android:hint="@string/registration_expired"
+                        android:inputType="date"
+                        android:maxLines="1"
                         android:shadowRadius="12"
-                        android:autoText="false"/>
+                        tools:text="01.01.2017." />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -209,53 +210,63 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/average_fuel_consumption"
+                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.Design.TextInputLayout"
-                    android:id="@+id/average_fuel_consumption"
+                    android:layout_alignParentTop="true"
                     android:baselineAligned="false"
                     android:clipChildren="false"
                     android:clipToPadding="false"
-                    android:weightSum="1"
                     android:gravity="left"
-                    android:layout_alignParentTop="true">
+                    android:weightSum="1">
 
                     <AutoCompleteTextView
+                        android:id="@+id/txt_vehicle_detail_average_fuel_consumption"
+                        style="@android:style/Widget.AutoCompleteTextView"
                         android:layout_width="117dp"
                         android:layout_height="wrap_content"
-                        style="@android:style/Widget.AutoCompleteTextView"
+                        android:autoText="false"
                         android:hint="@string/average_fuel_consumption"
-                        android:id="@+id/txt_vehicle_detail_average_fuel_consumption"
                         android:inputType="numberDecimal"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:shadowRadius="12"
-                        android:autoText="false" />
+                        android:singleLine="true" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <CheckBox
-                    android:text="Free"
-                    android:layout_width="96dp"
                     android:id="@+id/chb_vehicle_detail_isFree"
+                    android:layout_width="96dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="39dp" />
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="39dp"
+                    android:text="Free" />
 
 
             </RelativeLayout>
 
-
-            <SeekBar
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:paddingTop="6pt"
+                android:shadowDx="8"
+                android:shadowDy="8"
+                android:text="@string/fuel_status"
+                android:textSize="15dp" />
+
+            <SeekBar
                 android:id="@+id/vehicle_detail_seekFuelstatus"
-                android:text="Fuel status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.60"
-                android:max="100"/>
+                android:max="100"
+                android:text="Fuel status" />
 
             <LinearLayout
                 android:layout_width="match_parent"
