@@ -30,6 +30,8 @@ public class VehicleLab {
         return vehicles;
     }
 
+
+    /* metoda za dohvaćanje vozila iz baze u listu*/
     public ArrayList<Vehicle> getVehicleList(Map<String, Object> vehicleMap) {
 
         ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
@@ -66,6 +68,7 @@ public class VehicleLab {
         return vehicleList;
     }
 
+    /* metoda za dohvaćanje svih brojeva sasije*/
     public ArrayList<String> getAllChassisNumbers(ArrayList<Vehicle> vehicles) {
         ArrayList<String> chassisNumbers = new ArrayList<String>();
         for (Vehicle v : vehicles) {
@@ -74,16 +77,17 @@ public class VehicleLab {
         return chassisNumbers;
     }
 
+    /* metoda za dodavanje vozila u bazu*/
     public void addVehicle(Vehicle vehicle) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(vehicle);
     }
-
+    /* metoda za azuriranje vozila u bazi*/
     public void updateVehicle(Vehicle vehicle) {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.setValue(vehicle);
     }
-
+    /* metoda za brisanje vozila u bazi*/
     public void deleteVehicle(Vehicle vehicle){
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.removeValue();

@@ -91,8 +91,7 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
                 vehicleLab.updateVehicle(vehicle);
                 Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_updated, Toast.LENGTH_SHORT).show();
                 CurrentActivity.getActivity().getFragmentManager().popBackStack();
-            }
-            else {
+            } else {
                 Toast.makeText(CurrentActivity.getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
             }
         }
@@ -101,19 +100,18 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
 
     private void updateVehicleData() {
 
-            vehicle.setManufacturer(editTextManufacturerName.getText().toString());
-            vehicle.setModel(editTextmodelName.getText().toString());
-            vehicle.setProductYear((Long.parseLong(editTextProductYear.getText().toString())));
-            vehicle.setRegistrationDate(editTextRegistrationDate.getText().toString());
-            vehicle.setRegistrationExpired(editTextRegistrationExpired.getText().toString());
-            vehicle.setKw((Long.parseLong(editTextKW.getText().toString())));
-            vehicle.setChassisNumber(editTextChassisNumber.getText().toString());
-            vehicle.setRegistrationNumber(editTextregistrationNumber.getText().toString());
-            vehicle.setAverageFuelConsumption((Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())));
-            vehicle.setFree(checkBoxisFree.isChecked());
-            vehicle.setFuelStatus(Long.valueOf(seekBarfuelStatus.getProgress()));
-            vehicle.setKmNumber(Long.parseLong(editTextkmNumber.getText().toString()));
-
+        vehicle.setManufacturer(editTextManufacturerName.getText().toString());
+        vehicle.setModel(editTextmodelName.getText().toString());
+        vehicle.setProductYear((Long.parseLong(editTextProductYear.getText().toString())));
+        vehicle.setRegistrationDate(editTextRegistrationDate.getText().toString());
+        vehicle.setRegistrationExpired(editTextRegistrationExpired.getText().toString());
+        vehicle.setKw((Long.parseLong(editTextKW.getText().toString())));
+        vehicle.setChassisNumber(editTextChassisNumber.getText().toString());
+        vehicle.setRegistrationNumber(editTextregistrationNumber.getText().toString());
+        vehicle.setAverageFuelConsumption((Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())));
+        vehicle.setFree(checkBoxisFree.isChecked());
+        vehicle.setFuelStatus(Long.valueOf(seekBarfuelStatus.getProgress()));
+        vehicle.setKmNumber(Long.parseLong(editTextkmNumber.getText().toString()));
 
 
     }
