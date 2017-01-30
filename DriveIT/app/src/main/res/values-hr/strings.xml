@@ -71,4 +71,14 @@
     <string name="navigation_drawer_open">Otvori navigacijsku ladicu</string>
     <string name="service_added">Dodan servis</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="cancel_delete_vehicle">Odustani</string>
+    <string name="delete_vehicle">Izbriši</string>
+    <string name="endDate">Datum završetka</string>
+    <string name="km_number">Broj kilometara</string>
+    <string name="open">Otvori</string>
+    <string name="removal_question_vehicle">Želite li ukloniti vozilo</string>
+    <string name="startDate">Početni datum</string>
+    <string name="user">Korisnik</string>
+    <string name="vehicle_added">Dodano vozilo</string>
+    <string name="vehicle_updated">Ažurirano vozilo</string>
 </resources>
