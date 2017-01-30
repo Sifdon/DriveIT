@@ -44,7 +44,8 @@
                     android:hint="@string/manufacturer"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -61,7 +62,8 @@
                     android:hint="@string/model_veichle"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -78,7 +80,8 @@
                     android:hint="@string/production_year"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -95,7 +98,8 @@
                     android:hint="@string/kw"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -112,7 +116,8 @@
                     android:hint="@string/chassis_number"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -129,7 +134,8 @@
                     android:hint="@string/registration_number"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -147,7 +153,8 @@
                     android:hint="@string/km_number"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="12"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
@@ -175,7 +182,8 @@
                         android:inputType="date"
                         android:maxLines="1"
                         android:shadowRadius="12"
-                        tools:text="01.01.2017." />
+                        tools:text="01.01.2017."
+                        android:imeOptions="actionNext"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -228,7 +236,8 @@
                         android:hint="@string/average_fuel_consumption"
                         android:inputType="numberDecimal"
                         android:maxLines="1"
-                        android:shadowRadius="12" />
+                        android:shadowRadius="12"
+                        android:imeOptions="actionNext"/>
 
                 </android.support.design.widget.TextInputLayout>
 

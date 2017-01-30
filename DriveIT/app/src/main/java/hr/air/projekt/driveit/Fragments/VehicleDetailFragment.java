@@ -24,6 +24,7 @@ import java.util.Locale;
 
 import hr.air.projekt.datamodule.Vehicle;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
+import hr.air.projekt.driveit.Helper.Validation;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.VehicleLab;
 
@@ -84,24 +85,21 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
         } else if (view == buttonVehicleSave) {
 
-            updateVehicleData();
-            vehicleLab.updateVehicle(vehicle);
-            Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_updated, Toast.LENGTH_SHORT).show();
-            CurrentActivity.getActivity().getFragmentManager().popBackStack();
+            if (checkValidation()) {
+
+                updateVehicleData();
+                vehicleLab.updateVehicle(vehicle);
+                Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_updated, Toast.LENGTH_SHORT).show();
+                CurrentActivity.getActivity().getFragmentManager().popBackStack();
+            }
+            else {
+                Toast.makeText(CurrentActivity.getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
 
     private void updateVehicleData() {
-
-        /*if (editTextManufacturerName.getText().toString().trim().length() > 0) {
-            vehicle.setManufacturer(editTextManufacturerName.getText().toString());
-
-        }
-        else {
-            Toast.makeText(CurrentActivity.getActivity(), "You did not enter a Manufacturer", Toast.LENGTH_SHORT).show();
-            */
-
 
             vehicle.setManufacturer(editTextManufacturerName.getText().toString());
             vehicle.setModel(editTextmodelName.getText().toString());
@@ -198,5 +196,44 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         DatePickerDialog datePickerDialog = new DatePickerDialog(CurrentActivity.getActivity(), date, registrationExpiredDate.getYear(), registrationExpiredDate.getMonthOfYear(), registrationExpiredDate.getDayOfMonth());
         datePickerDialog.setCancelable(true);
         datePickerDialog.show();
+    }
+
+    /*provjera da li su sva polja popunjena*/
+    private boolean checkValidation() {
+        boolean ret = true;
+
+        if (!Validation.hasText(editTextManufacturerName)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextmodelName)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextProductYear)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextRegistrationDate)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextRegistrationExpired)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextKW)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextChassisNumber)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextregistrationNumber)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextAverageFuelConsumpt)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextkmNumber)) {
+            return false;
+        }
+
+
+        return ret;
     }
 }
