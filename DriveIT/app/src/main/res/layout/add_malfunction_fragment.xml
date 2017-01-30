@@ -14,6 +14,21 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="8pt"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="8"
+                android:shadowDy="8"
+                android:shadowRadius="10"
+                android:text="@string/add_malfunction"
+                android:textAlignment="center"
+                android:textColor="#406090"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <android.support.design.widget.TextInputLayout
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
@@ -28,10 +43,10 @@
                     android:contentDescription="@string/hint_email"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionName"
+                    android:imeOptions="actionNext"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:shadowRadius="12" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -47,7 +62,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/hint_email"
-                    android:editable="false"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionVehicle"
                     android:inputType="text"
@@ -129,7 +143,7 @@
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionDescription"
                     android:inputType="text"
-                    android:shadowRadius="12"/>
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout

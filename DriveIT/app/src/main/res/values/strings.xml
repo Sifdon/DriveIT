@@ -89,5 +89,10 @@
     <string name="update_vehicle">Update vehicle</string>
     <string name="fuel_status">Fuel status</string>
     <string name="vehicles">Vehicles</string>
+    <string name="malfunctionsS">Malfunctions</string>
+    <string name="lbl_malfunction_name">Malfunction Name</string>
+    <string name="update_malfunction">Update malfunction</string>
+    <string name="fill_manufacturer_name">Fill the manufacturer name</string>
+    <string name="add_malfunction">Add malfunction</string>
 
 </resources>

@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layout_malfunction_list_fragment"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_malfunction_list_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
+
 
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/malfunction_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingTop="20pt" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:paddingBottom="4pt"
+        android:paddingTop="-3dp"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:shadowDx="8"
+        android:shadowDy="8"
+        android:shadowRadius="10"
+        android:text="@string/malfunctionsS"
+        android:textAlignment="center"
+        android:textColor="#406090"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_malfunction"
@@ -19,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:src="@mipmap/ic_add"
-        />
+        android:src="@mipmap/ic_add" />
 
 </android.support.design.widget.CoordinatorLayout>
