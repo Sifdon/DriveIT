@@ -79,8 +79,27 @@
     <string name="user">User</string>
     <string name="service_added" >Service added</string>
     <string name="malfunctions">Malfunctions</string>
+
     <string name="startMileage">Mileage at start</string>
     <string name="endMileage">Mileage at end</string>
     <string name="crossedMileage">Mileage crossed</string>
+
+    <string name="removal_question_vehicle">Do you wish to remove this vehicle?</string>
+    <string name="cancel_delete_vehicle">Cancel</string>
+    <string name="delete_vehicle">Delete</string>
+    <string name="fill_all_fields">Fill all fields</string>
+    <string name="required">Required</string>
+    <string name="free">Free</string>
+    <string name="new_vehicle">New vehicle</string>
+    <string name="update_vehicle">Update vehicle</string>
+    <string name="fuel_status">Fuel status</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="malfunctionsS">Malfunctions</string>
+    <string name="lbl_malfunction_name">Malfunction Name</string>
+    <string name="update_malfunction">Update malfunction</string>
+    <string name="fill_manufacturer_name">Fill the manufacturer name</string>
+    <string name="add_malfunction">Add malfunction</string>
+    <string name="users">Users</string>
+
 
 </resources>

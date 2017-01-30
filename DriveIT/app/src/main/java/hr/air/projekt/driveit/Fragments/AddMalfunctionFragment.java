@@ -24,6 +24,7 @@ import java.util.UUID;
 import hr.air.projekt.datamodule.Malfunction;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.CurrentUser;
+import hr.air.projekt.driveit.Helper.Validation;
 import hr.air.projekt.driveit.MalfunctionLab;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.UserLab;
@@ -81,22 +82,37 @@ public class AddMalfunctionFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v == buttonMalfunctionSave) {
-            UUID id = UUID.randomUUID();
-            Malfunction malfunction = new Malfunction(editTextMalfunctionName.getText().toString(),
-                    id.toString(),
-                    editTextMalfunctionDescription.getText().toString(),
-                    textViewMalfunctionVehicle.getText().toString(),
-                    textViewMalfunctionReported.getText().toString(),
-                    textViewMalfunctionTime.getText().toString(),
-                    checkBoxMalfunctionType.isChecked(),
-                    checkBoxMalfunctionSolved.isChecked());
-            malfunctionLab.addMalfunction(malfunction);
-            Toast.makeText(CurrentActivity.getActivity(), R.string.malfunction_added,
-                    Toast.LENGTH_SHORT).show();
-            CurrentActivity.getActivity().getFragmentManager().popBackStack();
+            if (checkValidation()) {
+                UUID id = UUID.randomUUID();
+                Malfunction malfunction = new Malfunction(editTextMalfunctionName.getText().toString(),
+                        id.toString(),
+                        editTextMalfunctionDescription.getText().toString(),
+                        textViewMalfunctionVehicle.getText().toString(),
+                        textViewMalfunctionReported.getText().toString(),
+                        textViewMalfunctionTime.getText().toString(),
+                        checkBoxMalfunctionType.isChecked(),
+                        checkBoxMalfunctionSolved.isChecked());
+                malfunctionLab.addMalfunction(malfunction);
+                Toast.makeText(CurrentActivity.getActivity(), R.string.malfunction_added,
+                        Toast.LENGTH_SHORT).show();
+                CurrentActivity.getActivity().getFragmentManager().popBackStack();
+            } else {
+                Toast.makeText(CurrentActivity.getActivity(), R.string.fill_manufacturer_name, Toast.LENGTH_SHORT).show();
+            }
         }
+
         if (v == buttonMalfunctionCancel) {
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
         }
+    }
+    /*metoda koja provjerava da li je popunjeno polje editTextMalfunctionName*/
+
+    private boolean checkValidation() {
+        boolean ret = true;
+
+        if (!Validation.hasText(editTextMalfunctionName)) {
+            return false;
+        }
+        return ret;
     }
 }

@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.view.ViewPropertyAnimatorCompatSet;
 import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import java.util.Locale;
 import hr.air.projekt.datamodule.Vehicle;
 import hr.air.projekt.driveit.Adapters.VehicleAdapter;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
+import hr.air.projekt.driveit.Helper.Validation;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.VehicleLab;
 
@@ -37,6 +39,8 @@ import hr.air.projekt.driveit.VehicleLab;
 
 public class AddVehicleFragment extends Fragment implements View.OnClickListener {
 
+
+//    private variables
     private EditText editTextManufacturerName;
     private EditText editTextmodelName;
     private EditText editTextProductYear;
@@ -55,7 +59,7 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
     private DateTime registrationDate;
     private DateTimeFormatter dateTimeFormatter;
     private EditText editTextkmNumber;
-    VehicleLab  vehicleLab = new VehicleLab();
+    VehicleLab vehicleLab = new VehicleLab();
 
     @Nullable
     @Override
@@ -76,13 +80,12 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         buttonVehicleSave = (Button) view.findViewById(R.id.add_vehicle_buttonSave);
         buttonVehicleCancel = (Button) view.findViewById(R.id.add_vehicle_buttonCancel);
         seekBarAverageFuel = (SeekBar) view.findViewById(R.id.seekFuelstatus);
-        editTextkmNumber =(EditText) view.findViewById(R.id.txt_kmNumber);
+        editTextkmNumber = (EditText) view.findViewById(R.id.txt_kmNumber);
 
         buttonVehicleCancel.setOnClickListener(this);
         buttonVehicleSave.setOnClickListener(this);
         editTextRegistrationExpired.setOnClickListener(this);
         editTextRegistrationDate.setOnClickListener(this);
-
 
 
         dateTimeFormatter = DateTimeFormat.forPattern("DD.MM.yyyy.");
@@ -91,45 +94,51 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         registrationExpiredDate = d;
 
 
-
         return view;
     }
 
     @Override
     public void onClick(View view) {
 
-        if (view == editTextRegistrationDate){
+        if (view == editTextRegistrationDate) {
             showDatePickerDate();
 
-        }
-        else if(view==editTextRegistrationExpired){
+        } else if (view == editTextRegistrationExpired) {
             showDatePickerExpired();
-        }
-        else if(view == buttonVehicleCancel){
+        } else if (view == buttonVehicleCancel) {
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
-        }
-        else if(view == buttonVehicleSave){
-            Vehicle vehicle = new Vehicle(
-                    editTextManufacturerName.getText().toString(),
-                    editTextmodelName.getText().toString(),
-                    (Long.parseLong(editTextProductYear.getText().toString())),
-                    editTextRegistrationDate.getText().toString(),
-                    editTextRegistrationExpired.getText().toString(),
-                    (Long.parseLong(editTextKW.getText().toString())),
-                    editTextChassisNumber.getText().toString(),
-                    editTextregistrationNumber.getText().toString(),
-                    (Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())),
-                    checkBoxisFree.isChecked(),
-                    Long.valueOf(seekBarAverageFuel.getProgress()),
-                    Long.parseLong(editTextkmNumber.getText().toString()));
-            vehicleLab.addVehicle(vehicle);
-            Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_added,Toast.LENGTH_SHORT).show();
-            CurrentActivity.getActivity().getFragmentManager().popBackStack();
+        } else if (view == buttonVehicleSave) {
+
+            if (checkValidation()) {
+                Vehicle vehicle = new Vehicle(
+                        editTextManufacturerName.getText().toString(),
+                        editTextmodelName.getText().toString(),
+                        (Long.parseLong(editTextProductYear.getText().toString())),
+                        editTextRegistrationDate.getText().toString(),
+                        editTextRegistrationExpired.getText().toString(),
+                        (Long.parseLong(editTextKW.getText().toString())),
+                        editTextChassisNumber.getText().toString(),
+                        editTextregistrationNumber.getText().toString(),
+                        (Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())),
+                        checkBoxisFree.isChecked(),
+                        Long.valueOf(seekBarAverageFuel.getProgress()),
+                        Long.parseLong(editTextkmNumber.getText().toString()));
+                vehicleLab.addVehicle(vehicle);
+                Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_added, Toast.LENGTH_SHORT).show();
+                CurrentActivity.getActivity().getFragmentManager().popBackStack();
+
+            } else {
+                Toast.makeText(CurrentActivity.getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
 
-    private void showDatePickerDate(){
+    /*
+    otvara dateTimePicker za odabir datuma
+    registracije(editTextRegistrationDate)
+    */
+    private void showDatePickerDate() {
         final Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -149,7 +158,12 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         datePickerDialog.setCancelable(true);
         datePickerDialog.show();
     }
-    private void showDatePickerExpired(){
+
+    /*
+    otvara dateTimePicker za odabir datuma
+    isteka registracije(editTextRegistrationExpired)
+    */
+    private void showDatePickerExpired() {
         final Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -170,4 +184,46 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         datePickerDialog.setCancelable(true);
         datePickerDialog.show();
     }
+
+    /*provjera da li su sva polja popunjena*/
+    private boolean checkValidation() {
+        boolean ret = true;
+
+        if (!Validation.hasText(editTextManufacturerName)) {
+            return false;
+        }
+
+        if (!Validation.hasText(editTextmodelName)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextProductYear)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextRegistrationDate)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextRegistrationExpired)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextKW)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextChassisNumber)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextregistrationNumber)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextAverageFuelConsumpt)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextkmNumber)) {
+            return false;
+        }
+
+
+        return ret;
+    }
+
+
 }

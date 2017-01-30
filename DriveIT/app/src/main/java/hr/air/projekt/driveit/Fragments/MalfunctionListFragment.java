@@ -61,16 +61,13 @@ public class MalfunctionListFragment extends Fragment implements NavigationItem,
                 malfunctionList = malfunctionLab.getMalfunctionsList((Map<String, Object>) dataSnapshot.getValue());
                 adapter = new MalfunctionAdapter(malfunctionList);
                 malfunctionRecyclerView.setAdapter(adapter);
-                malfunctionRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).color(Color.TRANSPARENT).marginResId(R.dimen.activity_horizontal_margin).build());
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-
-
 
         return view;
     }

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,6 +14,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="8pt"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="8"
+                android:shadowDy="8"
+                android:shadowRadius="10"
+                android:text="@string/update_malfunction"
+                android:textAlignment="center"
+                android:textColor="#406090"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <android.support.design.widget.TextInputLayout
                 style="@style/Widget.Design.TextInputLayout"
@@ -31,7 +47,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:imeOptions="actionNext"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -47,7 +63,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/hint_email"
-                    android:editable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:fontFamily="sans-serif"
@@ -69,15 +84,13 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionUser"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -91,15 +104,13 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:fontFamily="sans-serif"
                     android:hint="@string/malfunctionDate"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:shadowRadius="12" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout

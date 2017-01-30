@@ -43,6 +43,8 @@ public class MalfunctionHolder extends RecyclerView.ViewHolder implements View.O
         textViewDescription =(TextView)itemView.findViewById(R.id.recycler_view_malfunctionDescription);
         checkBoxSolved = (CheckBox) itemView.findViewById(R.id.recycler_view_malfunctionSolved);
         checkBoxSolved.setClickable(false);
+        textViewName.setEnabled(false);
+        textViewDescription.setEnabled(false);
         this.allMalfunctions = malfunctions;
         this.adapter = adapter;
     }

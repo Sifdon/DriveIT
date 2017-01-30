@@ -24,6 +24,7 @@ import java.util.Locale;
 
 import hr.air.projekt.datamodule.Vehicle;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
+import hr.air.projekt.driveit.Helper.Validation;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.VehicleLab;
 
@@ -31,7 +32,7 @@ import hr.air.projekt.driveit.VehicleLab;
  * Created by mico on 29.1.2017..
  */
 
-public class VehicleDetailFragment extends Fragment implements View.OnClickListener{
+public class VehicleDetailFragment extends Fragment implements View.OnClickListener {
 
     private static final String VEHICLE_DETAILS = "VehicleDetails";
 
@@ -60,7 +61,7 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.vehicle_detail_fragment,container,false);
+        View view = inflater.inflate(R.layout.vehicle_detail_fragment, container, false);
         Bundle bundle = getArguments();
         vehicle = (Vehicle) bundle.getSerializable(VEHICLE_DETAILS);
         bindViews(view);
@@ -75,26 +76,29 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        if (view == editTextRegistrationDate){
+        if (view == editTextRegistrationDate) {
             showDatePickerDate();
 
-        }
-        else if(view==editTextRegistrationExpired){
+        } else if (view == editTextRegistrationExpired) {
             showDatePickerExpired();
-        }
-        else if(view == buttonVehicleCancel){
+        } else if (view == buttonVehicleCancel) {
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
-        }
-        else if(view == buttonVehicleSave){
-            updateVehicleData();
-            vehicleLab.updateVehicle(vehicle);
-            Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_updated, Toast.LENGTH_SHORT).show();
-            CurrentActivity.getActivity().getFragmentManager().popBackStack();
+        } else if (view == buttonVehicleSave) {
+
+            if (checkValidation()) {
+
+                updateVehicleData();
+                vehicleLab.updateVehicle(vehicle);
+                Toast.makeText(CurrentActivity.getActivity(), R.string.vehicle_updated, Toast.LENGTH_SHORT).show();
+                CurrentActivity.getActivity().getFragmentManager().popBackStack();
+            } else {
+                Toast.makeText(CurrentActivity.getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
 
-    private void updateVehicleData(){
+    private void updateVehicleData() {
 
         vehicle.setManufacturer(editTextManufacturerName.getText().toString());
         vehicle.setModel(editTextmodelName.getText().toString());
@@ -110,11 +114,9 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         vehicle.setKmNumber(Long.parseLong(editTextkmNumber.getText().toString()));
 
 
-
-
     }
 
-    private void bindViews(View view){
+    private void bindViews(View view) {
 
         editTextManufacturerName = (EditText) view.findViewById(R.id.txt_vehicle_detail_manufacturer);
         editTextmodelName = (EditText) view.findViewById(R.id.txt_detail_vehicle_model);
@@ -129,7 +131,7 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         buttonVehicleSave = (Button) view.findViewById(R.id.vehicle_detail_buttonSave);
         buttonVehicleCancel = (Button) view.findViewById(R.id.vehicle_detail_buttonCancel);
         seekBarfuelStatus = (SeekBar) view.findViewById(R.id.vehicle_detail_seekFuelstatus);
-        editTextkmNumber =(EditText) view.findViewById(R.id.txt_vehicle_detail_kmNumber);
+        editTextkmNumber = (EditText) view.findViewById(R.id.txt_vehicle_detail_kmNumber);
 
         editTextManufacturerName.setText(vehicle.getManufacturer());
         editTextmodelName.setText(vehicle.getModel());
@@ -139,8 +141,6 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         editTextregistrationNumber.setText(vehicle.getRegistrationNumber());
         editTextRegistrationDate.setText(vehicle.getRegistrationDate());
         editTextRegistrationExpired.setText(vehicle.getRegistrationExpired());
-
-        //taj ne radi.. edit
         editTextAverageFuelConsumpt.setText(vehicle.getAverageFuelConsumption().toString());
         checkBoxisFree.setChecked(vehicle.isFree());
         seekBarfuelStatus.setProgress(Integer.valueOf(vehicle.getFuelStatus().toString()));
@@ -151,15 +151,9 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         buttonVehicleSave.setOnClickListener(this);
         editTextRegistrationExpired.setOnClickListener(this);
         editTextRegistrationDate.setOnClickListener(this);
-
-
-
-
-
-
-
     }
-    private void showDatePickerDate(){
+
+    private void showDatePickerDate() {
         final Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -179,7 +173,8 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         datePickerDialog.setCancelable(true);
         datePickerDialog.show();
     }
-    private void showDatePickerExpired(){
+
+    private void showDatePickerExpired() {
         final Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -199,5 +194,44 @@ public class VehicleDetailFragment extends Fragment implements View.OnClickListe
         DatePickerDialog datePickerDialog = new DatePickerDialog(CurrentActivity.getActivity(), date, registrationExpiredDate.getYear(), registrationExpiredDate.getMonthOfYear(), registrationExpiredDate.getDayOfMonth());
         datePickerDialog.setCancelable(true);
         datePickerDialog.show();
+    }
+
+    /*provjera da li su sva polja popunjena*/
+    private boolean checkValidation() {
+        boolean ret = true;
+
+        if (!Validation.hasText(editTextManufacturerName)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextmodelName)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextProductYear)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextRegistrationDate)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextRegistrationExpired)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextKW)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextChassisNumber)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextregistrationNumber)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextAverageFuelConsumpt)) {
+            return false;
+        }
+        if (!Validation.hasText(editTextkmNumber)) {
+            return false;
+        }
+
+
+        return ret;
     }
 }
