@@ -86,6 +86,8 @@ public class TravelOrderListFragment extends Fragment implements NavigationItem,
 
     }
 
+
+
     @Override
     public String getItemName() {
         return NAME;
@@ -105,6 +107,7 @@ public class TravelOrderListFragment extends Fragment implements NavigationItem,
     public Fragment getFragment() {
         return this;
     }
+
 
 
 }

@@ -79,5 +79,8 @@
     <string name="user">User</string>
     <string name="service_added" >Service added</string>
     <string name="malfunctions">Malfunctions</string>
+    <string name="startMileage">Mileage at start</string>
+    <string name="endMileage">Mileage at end</string>
+    <string name="crossedMileage">Mileage crossed</string>
 
 </resources>
