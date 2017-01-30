@@ -91,15 +91,12 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                                     userLab.setRoles(user.getUid(),checkBoxMechanic.isChecked(),checkBoxAdmin.isChecked(),checkBoxEmployee.isChecked());
                                 }
                             }
-
                         });
                 CurrentActivity.getActivity().getFragmentManager().popBackStack();
             }
         }
     }
-
-
-
+    
     private boolean checkPasswordMatch() {
         String p1 = editTextPassword.getText().toString();
         String p2 = editTextRepeatPassword.getText().toString();

@@ -94,5 +94,6 @@
     <string name="update_malfunction">Update malfunction</string>
     <string name="fill_manufacturer_name">Fill the manufacturer name</string>
     <string name="add_malfunction">Add malfunction</string>
+    <string name="users">Users</string>
 
 </resources>

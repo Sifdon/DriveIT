@@ -192,6 +192,7 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         if (!Validation.hasText(editTextManufacturerName)) {
             return false;
         }
+
         if (!Validation.hasText(editTextmodelName)) {
             return false;
         }

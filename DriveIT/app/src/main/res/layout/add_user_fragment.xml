@@ -15,20 +15,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="8pt"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="8"
+                android:shadowDy="8"
+                android:shadowRadius="10"
                 android:text="@string/new_user"
                 android:textAlignment="center"
-                android:textSize="30dp"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="5"
-                android:shadowColor="@color/colorPrimaryDark"
-                />
+                android:textColor="#406090"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <android.support.design.widget.TextInputLayout
                 style="@style/Widget.Design.TextInputLayout"
@@ -41,14 +41,12 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:contentDescription="@string/hint_email"
                     android:fontFamily="sans-serif"
                     android:hint="@string/label_firstName"
                     android:inputType="text"
                     android:maxLines="1"
                     android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:imeOptions="actionNext"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -63,14 +61,12 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:contentDescription="@string/hint_email"
                     android:fontFamily="sans-serif"
                     android:hint="@string/label_lastName"
                     android:inputType="text"
                     android:maxLines="1"
                     android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:imeOptions="actionNext"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -86,17 +82,14 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:contentDescription="@string/hint_email"
                     android:fontFamily="sans-serif"
                     android:hint="@string/label_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:imeOptions="actionNext" />
 
             </android.support.design.widget.TextInputLayout>
-
 
 
             <android.support.design.widget.TextInputLayout
@@ -110,14 +103,12 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:contentDescription="@string/hint_email"
                     android:fontFamily="sans-serif"
                     android:hint="@string/label_password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:imeOptions="actionNext" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -132,14 +123,12 @@
                     style="@android:style/Widget.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:contentDescription="@string/label_repeatPassword"
                     android:fontFamily="sans-serif"
                     android:hint="@string/label_repeatPassword"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:shadowRadius="12"
-                    android:singleLine="true" />
+                    android:imeOptions="actionNext"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -152,21 +141,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/employee" />
+                    android:text="@string/employee"
+                    android:imeOptions="actionNext"/>
 
                 <CheckBox
                     android:id="@+id/add_user_checkBoxRoleAdministrator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/Administrator" />
+                    android:text="@string/Administrator"
+                    android:imeOptions="actionNext"/>
 
                 <CheckBox
                     android:id="@+id/add_user_checkBoxRoleMechanic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/mechanic" />
+                    android:text="@string/mechanic"
+                    android:imeOptions="actionNext"/>
             </LinearLayout>
 
             <Button
