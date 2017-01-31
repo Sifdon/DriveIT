@@ -133,7 +133,6 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         }
 
     }
-
     /*
     otvara dateTimePicker za odabir datuma
     registracije(editTextRegistrationDate)

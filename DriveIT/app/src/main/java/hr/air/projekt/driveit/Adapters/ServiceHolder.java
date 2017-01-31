@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import hr.air.projekt.datamodule.Service;
 
 import hr.air.projekt.driveit.Fragments.AddMalfunctionFragment;
@@ -33,19 +36,24 @@ public class ServiceHolder extends RecyclerView.ViewHolder implements View.OnLon
 
     private static final String SERVICE_DETAILS = "ServiceDetails";
     private static final String MECHANIC_NAME = "MechanicName";
-    private TextView textViewMechanic;
-    private TextView textViewDate;
-    private TextView textViewDescription;
 
     private Service serviceData;
     private String mechanicName;
 
+    @BindView(R.id.recycler_view_serviceMechanic)
+    EditText editTextMechanician;
+    @BindView(R.id.recycler_view_serviceDate)
+    EditText editTextDateOfService;
+    @BindView(R.id.recycler_view_serviceDescription)
+    EditText editTextDescription;
+
     public ServiceHolder(View itemView, List<Service> services, ServiceAdapter adapter) {
         super(itemView);
         itemView.setOnLongClickListener(this);
-        textViewMechanic = (TextView) itemView.findViewById(R.id.recycler_view_serviceMechanic);
-        textViewDate = (TextView) itemView.findViewById(R.id.recycler_view_serviceDate);
-        textViewDescription = (TextView) itemView.findViewById(R.id.recycler_view_serviceDescription);
+        ButterKnife.bind(this, itemView);
+        editTextDateOfService.setEnabled(false);
+        editTextDescription.setEnabled(false);
+        editTextMechanician.setEnabled(false);
     }
 
     public void bindService(Service service) {
@@ -56,7 +64,7 @@ public class ServiceHolder extends RecyclerView.ViewHolder implements View.OnLon
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, Object> user = (Map<String, Object>) dataSnapshot.getValue();
                 mechanicName = user.get("firstName") + " " + user.get("lastName");
-                textViewMechanic.setText(mechanicName);
+                editTextMechanician.setText(mechanicName);
             }
 
             @Override
@@ -65,8 +73,8 @@ public class ServiceHolder extends RecyclerView.ViewHolder implements View.OnLon
             }
         });
 
-        textViewDate.setText(service.getDate());
-        textViewDescription.setText(service.getDescription());
+        editTextDateOfService.setText(service.getDate());
+        editTextDescription.setText(service.getDescription());
     }
 
     @Override

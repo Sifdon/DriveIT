@@ -3,25 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/recycler_view_serviceMechanic"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:background="#f6f6f6"
+    android:fadingEdge="vertical"
+    android:gravity="bottom">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="Josip" />
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mechanician"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/recycler_view_serviceDate"
+        <EditText
+            android:id="@+id/recycler_view_serviceMechanic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Mehanician"
+            android:clickable="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="01.01.2017." />
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date_of_service"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/recycler_view_serviceDescription"
+        <EditText
+            android:id="@+id/recycler_view_serviceDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="01.01.2017."
+            android:clickable="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="Description" />
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description_of_service"
+            android:layout_weight="0.75"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/recycler_view_serviceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            tools:text="Description"
+            android:clickable="false"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

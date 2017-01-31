@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements
     private TextView textViewCurrentUserEmail;
 
 
-    private UserLab userLab =new UserLab();
+    private UserLab userLab = new UserLab();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements
         setSupportActionBar(toolbar);
         JodaTimeAndroid.init(this);
         setCurrentUser();
-        textViewCurrentUserName =(TextView) findViewById(R.id.textViewCurrentUserName);
+        textViewCurrentUserName = (TextView) findViewById(R.id.textViewCurrentUserName);
         textViewCurrentUserEmail = (TextView) findViewById(R.id.textViewCurrentUserEmail);
 
 
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    private void setCurrentUser(){
+    private void setCurrentUser() {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_USER);
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 ArrayList<User> userList = new ArrayList<User>();
                 userList = userLab.getUserList((Map<String, Object>) dataSnapshot.getValue());
-                CurrentUser.setUser(userLab.getUserById(uid,userList));
+                CurrentUser.setUser(userLab.getUserById(uid, userList));
             }
 
             @Override
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,8 +151,7 @@ public class MainActivity extends AppCompatActivity implements
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch(id)
-        {
+        switch (id) {
             //Handle click on static options
             case R.id.logout:
                 drawer.closeDrawer(GravityCompat.START);
@@ -170,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements
         return true;
     }
 
-
     public void logOut() {
         finish();
         firebaseAuth.signOut();
@@ -185,8 +182,7 @@ public class MainActivity extends AppCompatActivity implements
         drawerToggle.syncState();
     }
 
-    private void setUpAvailableModules()
-    {
+    private void setUpAvailableModules() {
         NavigationManager nm = NavigationManager.getInstance();
         nm.setDependencies(this, drawer, navigationView, R.id.dynamic_group);
         nm.clearNavigationItems();
@@ -200,25 +196,22 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-        if(fragmentManager.getBackStackEntryCount() != 0){
+        if (fragmentManager.getBackStackEntryCount() != 0) {
             // there is something on the stack, I'm in the fragment
-            if(drawer.isDrawerOpen(GravityCompat.START)){
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
-            }
-            else{
+            } else {
                 fragmentManager.popBackStack();
             }
         } else {
             // I'm on the landing page, close the drawer or exit
-            if(drawer.isDrawerOpen(GravityCompat.START)){
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
-            }
-            else{
+            } else {
                 super.onBackPressed();
             }
         }
     }
-
 
 
     @Override
@@ -230,10 +223,9 @@ public class MainActivity extends AppCompatActivity implements
     View.OnClickListener navigationClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(getFragmentManager().getBackStackEntryCount() == 0) {
+            if (getFragmentManager().getBackStackEntryCount() == 0) {
                 drawer.openDrawer(GravityCompat.START);
-            }
-            else{
+            } else {
                 onBackPressed();
             }
         }

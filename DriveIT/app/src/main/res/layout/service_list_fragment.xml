@@ -11,7 +11,26 @@
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/service_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingTop="20pt"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:paddingBottom="4pt"
+        android:paddingTop="-3dp"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:shadowDx="8"
+        android:shadowDy="8"
+        android:shadowRadius="10"
+        android:text="@string/services"
+        android:textAlignment="center"
+        android:textColor="#406090"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_service"

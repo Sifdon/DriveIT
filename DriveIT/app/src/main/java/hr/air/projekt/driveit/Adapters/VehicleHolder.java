@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import hr.air.projekt.datamodule.Vehicle;
 import hr.air.projekt.driveit.Fragments.VehicleDetailFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
@@ -32,14 +33,22 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
 
     private static final String VEHICLE_DETAILS = "VehicleDetails";
 
-    private EditText editTextManufacturer;
-    private EditText editTextmodel;
-    private EditText editTextregistrationNumber;
-    private EditText editTextdriver;
-    private EditText editTextfree;
-    private Button buttonDelete;
+
+    @BindView(R.id.list_manufacturer)
+    EditText editTextManufacturer;
+    @BindView(R.id.list_model)
+    EditText editTextmodel;
+    @BindView(R.id.list_registration_number)
+    EditText editTextregistrationNumber;
+    @BindView(R.id.list_driver)
+    EditText editTextdriver;
+    @BindView(R.id.list_status)
+    EditText editTextfree;
+    @BindView(R.id.list_button_deleteVehicle)
+    Button buttonDelete;
+
     private Vehicle vehicledata;
-    private EditText editTextKmNumber; //broj kilometara
+
     private List<Vehicle> allVehicle;
     private VehicleLab vehicleLab = new VehicleLab();
     private VehicleAdapter adapter;
@@ -47,19 +56,13 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
     public VehicleHolder(View itemView, List<Vehicle> vehicles, VehicleAdapter vehicleAdapter) {
         super(itemView);
         itemView.setOnLongClickListener(this);
+        ButterKnife.bind(this, itemView);
 
-        editTextManufacturer = (EditText) itemView.findViewById(R.id.list_manufacturer);
-        editTextmodel = (EditText) itemView.findViewById(R.id.list_model);
-        editTextregistrationNumber = (EditText) itemView.findViewById(R.id.list_registration_number);
-        //editTextdriver = (EditText) itemView.findViewById(R.id.list_driver);
-        editTextfree = (EditText) itemView.findViewById(R.id.list_status);
         editTextManufacturer.setEnabled(false);
         editTextfree.setEnabled(false);
         // editTextdriver.setEnabled(false);
         editTextmodel.setEnabled(false);
         editTextregistrationNumber.setEnabled(false);
-
-        buttonDelete = (Button) itemView.findViewById(R.id.list_button_deleteVehicle);
         buttonDelete.setOnClickListener(this);
 
         this.allVehicle = vehicles;

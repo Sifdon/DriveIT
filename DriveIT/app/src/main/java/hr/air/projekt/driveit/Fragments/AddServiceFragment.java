@@ -38,6 +38,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import hr.air.projekt.datamodule.Service;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
@@ -55,16 +57,28 @@ import static hr.air.projekt.driveit.R.layout.support_simple_spinner_dropdown_it
 public class AddServiceFragment extends Fragment implements View.OnClickListener{
 
     private static final String CHILD_VEHICLE = "vehicles";
-    private EditText editTextDateOfService;
-    private EditText editTextDateOfNextService;
-    private EditText editTextDescription;
-    private EditText editTextMechanic;
-    private EditText editTextPriceOfParts;
-    private EditText editTextPriceOfWork;
-    private Spinner spinnerVehicle;
-    private CheckBox checkBoxRegularService;
-    private Button buttonSave;
-    private Button buttonCancel;
+
+
+    @BindView(R.id.add_service_dateOfService)
+    EditText editTextDateOfService;
+    @BindView(R.id.add_service_dateOfNextService)
+    EditText editTextDateOfNextService;
+    @BindView(R.id.add_service_description)
+    EditText editTextDescription;
+    @BindView(R.id.add_service_mechanic)
+    EditText editTextMechanic;
+    @BindView(R.id.add_service_priceOfParts)
+    EditText editTextPriceOfParts;
+    @BindView(R.id.add_service_priceOfWork)
+    EditText editTextPriceOfWork;
+    @BindView(R.id.add_service_vehiclePicker)
+    Spinner spinnerVehicle;
+    @BindView(R.id.add_service_type)
+    CheckBox checkBoxRegularService;
+    @BindView(R.id.add_service_buttonSave)
+    Button buttonSave;
+    @BindView(R.id.add_service_buttonCancel)
+    Button buttonCancel;
 
     private VehicleLab vehicleLab = new VehicleLab();
     private ServiceLab serviceLab = new ServiceLab();
@@ -78,9 +92,24 @@ public class AddServiceFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_service_fragment, container, false);
-        bindViews(view);
+        bindViews();
+        ButterKnife.bind(this,view);
+
         fmt = DateTimeFormat.forPattern("DD.MM.yyyy.");
         dateOfNextService = DateTime.now(DateTimeZone.UTC);
+
+
+        DateTimeFormatter fmtt = DateTimeFormat.forPattern("DD.MM.yyyy.");
+        editTextDateOfService.setText(DateTime.now().toString(fmtt));
+
+        editTextDateOfNextService.setOnClickListener(this);
+
+        buttonCancel.setOnClickListener(this);
+        buttonSave.setOnClickListener(this);
+
+        editTextMechanic.setText(CurrentUser.getUser().getFirstName() + " " + CurrentUser.getUser().getLastName());
+        editTextMechanic.setEnabled(false);
+        editTextDateOfNextService.setText(R.string.choose_date);
 
         spinnerVehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -94,27 +123,12 @@ public class AddServiceFragment extends Fragment implements View.OnClickListener
             }
         });
 
+
         return view;
     }
 
-    private void bindViews(View view) {
-        editTextDateOfService = (EditText) view.findViewById(R.id.add_service_dateOfService);
-        editTextDateOfNextService = (EditText) view.findViewById(R.id.add_service_dateOfNextService);
-        editTextDescription = (EditText) view.findViewById(R.id.add_service_description);
-        editTextMechanic = (EditText) view.findViewById(R.id.add_service_mechanic);
-        editTextPriceOfParts = (EditText) view.findViewById(R.id.add_service_priceOfParts);
-        editTextPriceOfWork = (EditText) view.findViewById(R.id.add_service_priceOfWork);
-        spinnerVehicle = (Spinner) view.findViewById(R.id.add_service_vehiclePicker);
-        checkBoxRegularService = (CheckBox) view.findViewById(R.id.add_service_type);
-        buttonCancel = (Button) view.findViewById(R.id.add_service_buttonCancel);
-        buttonSave = (Button) view.findViewById(R.id.add_service_buttonSave);
+    private void bindViews() {
 
-        buttonCancel.setOnClickListener(this);
-        buttonSave.setOnClickListener(this);
-
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("DD.MM.yyyy.");
-        editTextDateOfService.setText(DateTime.now().toString(fmt));
-        editTextMechanic.setText(CurrentUser.getUser().getFirstName() + " " + CurrentUser.getUser().getLastName());
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLE);
         db.addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,13 +144,10 @@ public class AddServiceFragment extends Fragment implements View.OnClickListener
             }
         });
 
-        editTextDateOfNextService.setText(R.string.choose_date);
-        editTextDateOfNextService.setOnClickListener(this);
+
 
 
     }
-
-
 
     @Override
     public void onClick(View v) {

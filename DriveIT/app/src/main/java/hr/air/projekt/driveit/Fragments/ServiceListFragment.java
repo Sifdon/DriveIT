@@ -64,7 +64,7 @@ public class ServiceListFragment extends Fragment implements NavigationItem, Vie
                 serviceList = serviceLab.getServiceList((Map<String, Object>) dataSnapshot.getValue());
                 adapter = new ServiceAdapter(serviceList);
                 serviceRecyclerView.setAdapter(adapter);
-                serviceRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+
             }
 
             @Override

@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import hr.air.projekt.datamodule.Service;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.R;
@@ -41,17 +42,26 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
     private static final String SERVICE_DETAILS = "ServiceDetails";
     private static final String MECHANIC_NAME = "MechanicName";
 
-    private EditText editTextDateOfService;
-    private EditText editTextDateOfNextService;
-    private EditText editTextDescription;
-    private EditText editTextMechanic;
-    private EditText editTextPriceOfParts;
-    private EditText editTextPriceOfWork;
-    private EditText editTextVehicle;
-    private CheckBox checkBoxRegularService;
-    private Button buttonSave;
-    private Button buttonCancel;
-
+    @BindView(R.id.service_detail_dateOfService)
+    EditText editTextDateOfService;
+    @BindView(R.id.service_detail_dateOfNextService)
+    EditText editTextDateOfNextService;
+    @BindView(R.id.service_detail_description)
+    EditText editTextDescription;
+    @BindView(R.id.service_detail_mechanic)
+    EditText editTextMechanic;
+    @BindView(R.id.service_detail_priceOfParts)
+    EditText editTextPriceOfParts;
+    @BindView(R.id.service_detail_priceOfWork)
+    EditText editTextPriceOfWork;
+    @BindView(R.id.service_detail_vehicle)
+    EditText editTextVehicle;
+    @BindView(R.id.service_detail_type)
+    CheckBox checkBoxRegularService;
+    @BindView(R.id.service_detail_buttonSave)
+    Button buttonSave;
+    @BindView(R.id.service_detail_buttonCancel)
+    Button buttonCancel;
 
     private DateTime dateOfNextService;
     private DateTimeFormatter fmt;
@@ -65,14 +75,13 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.service_detail_fragment, container, false);
         Bundle bundle = getArguments();
+        ButterKnife.bind(this, view);
         service = (Service) bundle.getSerializable(SERVICE_DETAILS);
         mechanicName = (String) bundle.getSerializable(MECHANIC_NAME);
-        bindViews(view);
+        bindViews();
 
         fmt = DateTimeFormat.forPattern("DD.MM.yyyy.");
         dateOfNextService = fmt.parseDateTime(service.getDateOfNextService());
-
-
 
 
         return view;
@@ -80,13 +89,11 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v==editTextDateOfNextService){
+        if (v == editTextDateOfNextService) {
             showDatePicker();
-        }
-        else if(v == buttonCancel){
+        } else if (v == buttonCancel) {
             CurrentActivity.getActivity().getFragmentManager().popBackStack();
-        }
-        else if (v==buttonSave){
+        } else if (v == buttonSave) {
             updateServiceData();
             serviceLab.updateService(service);
             Toast.makeText(CurrentActivity.getActivity(), R.string.service_updated,
@@ -96,27 +103,16 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
 
     }
 
-
-    private void updateServiceData(){
+    private void updateServiceData() {
         service.setDescription(editTextDescription.getText().toString());
         service.setPriceOfParts(Double.parseDouble(editTextPriceOfParts.getText().toString()));
         service.setPriceOfWork(Double.parseDouble(editTextPriceOfWork.getText().toString()));
         service.setType(checkBoxRegularService.isChecked());
     }
 
-    private void bindViews(View view) {
-        editTextDateOfService = (EditText) view.findViewById(R.id.service_detail_dateOfService);
-        editTextDateOfNextService = (EditText) view.findViewById(R.id.service_detail_dateOfNextService);
-        editTextDescription = (EditText) view.findViewById(R.id.service_detail_description);
-        editTextMechanic = (EditText) view.findViewById(R.id.service_detail_mechanic);
-        editTextPriceOfParts = (EditText) view.findViewById(R.id.service_detail_priceOfParts);
-        editTextPriceOfWork = (EditText) view.findViewById(R.id.service_detail_priceOfWork);
-        editTextVehicle = (EditText) view.findViewById(R.id.service_detail_vehicle);
-        checkBoxRegularService = (CheckBox) view.findViewById(R.id.service_detail_type);
-        buttonCancel = (Button) view.findViewById(R.id.service_detail_buttonCancel);
-        buttonSave = (Button) view.findViewById(R.id.service_detail_buttonSave);
+    private void bindViews() {
 
-        System.out.println("Vehicle: "+ service.getVehicleId());
+        System.out.println("Vehicle: " + service.getVehicleId());
         editTextVehicle.setText(service.getVehicleId());
         editTextDateOfService.setText(service.getDate());
         editTextDateOfNextService.setText(service.getDateOfNextService());
@@ -131,8 +127,7 @@ public class ServiceDetailFragment extends Fragment implements View.OnClickListe
 
     }
 
-
-    private void showDatePicker(){
+    private void showDatePicker() {
         final Calendar myCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
