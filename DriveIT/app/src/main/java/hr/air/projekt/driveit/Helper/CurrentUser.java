@@ -11,6 +11,7 @@ import hr.air.projekt.datamodule.User;
 public class CurrentUser {
     private static User user;
 
+
     public static User getUser() {
         return user;
     }
@@ -18,4 +19,9 @@ public class CurrentUser {
     public static void setUser(User user) {
         CurrentUser.user = user;
     }
+
+
+
+
+
 }

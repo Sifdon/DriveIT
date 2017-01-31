@@ -77,8 +77,6 @@ public class MainActivity extends AppCompatActivity implements
         textViewCurrentUserName = (TextView) findViewById(R.id.textViewCurrentUserName);
         textViewCurrentUserEmail = (TextView) findViewById(R.id.textViewCurrentUserEmail);
 
-
-
         /*
         DATETIME PODSJETNIK
         String date = "15:45:28, 21.01.2017.";
@@ -142,7 +140,6 @@ public class MainActivity extends AppCompatActivity implements
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -212,7 +209,6 @@ public class MainActivity extends AppCompatActivity implements
             }
         }
     }
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

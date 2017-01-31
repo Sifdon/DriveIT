@@ -2,16 +2,14 @@ package hr.air.projekt.driveit.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.view.ViewPropertyAnimatorCompatSet;
-import android.text.SpannableStringBuilder;
+import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -23,11 +21,11 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import hr.air.projekt.datamodule.Vehicle;
-import hr.air.projekt.driveit.Adapters.VehicleAdapter;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.Validation;
 import hr.air.projekt.driveit.R;
@@ -39,26 +37,37 @@ import hr.air.projekt.driveit.VehicleLab;
 
 public class AddVehicleFragment extends Fragment implements View.OnClickListener {
 
+    @BindView(R.id.txt_manufacturer)
+    EditText editTextManufacturerName;
+    @BindView(R.id.txt_model_veichle)
+    EditText editTextmodelName;
+    @BindView(R.id.txt_production_year)
+    EditText editTextProductYear;
+    @BindView(R.id.txt_kw)
+    EditText editTextKW;
+    @BindView(R.id.txt_chassis_number)
+    EditText editTextChassisNumber;
+    @BindView(R.id.txt_registration_number)
+    EditText editTextregistrationNumber;
+    @BindView(R.id.txt_registration_date)
+    EditText editTextRegistrationDate;
+    @BindView(R.id.txt_registration_expired)
+    EditText editTextRegistrationExpired;
+    @BindView(R.id.txt_average_fuel_consumption)
+    EditText editTextAverageFuelConsumpt;
+    @BindView(R.id.seekFuelstatus)
+    SeekBar seekBarAverageFuel;
 
-//    private variables
-    private EditText editTextManufacturerName;
-    private EditText editTextmodelName;
-    private EditText editTextProductYear;
-    private EditText editTextKW;
-    private EditText editTextChassisNumber;
-    private EditText editTextregistrationNumber;
-    private EditText editTextRegistrationDate;
-    private EditText editTextRegistrationExpired;
-    private EditText editTextAverageFuelConsumpt;
-    private EditText editTextFuelStatus;
-    private SeekBar seekBarAverageFuel;
-    private CheckBox checkBoxisFree;
-    private Button buttonVehicleCancel;
-    private Button buttonVehicleSave;
+    @BindView(R.id.add_vehicle_buttonCancel)
+    Button buttonVehicleCancel;
+    @BindView(R.id.add_vehicle_buttonSave)
+    Button buttonVehicleSave;
+    @BindView(R.id.txt_kmNumber)
+    EditText editTextkmNumber;
+
     private DateTime registrationExpiredDate;
     private DateTime registrationDate;
     private DateTimeFormatter dateTimeFormatter;
-    private EditText editTextkmNumber;
     VehicleLab vehicleLab = new VehicleLab();
 
     @Nullable
@@ -66,33 +75,17 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.add_vehicle_fragment, container, false);
-
-        editTextManufacturerName = (EditText) view.findViewById(R.id.txt_manufacturer);
-        editTextmodelName = (EditText) view.findViewById(R.id.txt_model_veichle);
-        editTextProductYear = (EditText) view.findViewById(R.id.txt_production_year);
-        editTextKW = (EditText) view.findViewById(R.id.txt_kw);
-        editTextChassisNumber = (EditText) view.findViewById(R.id.txt_chassis_number);
-        editTextregistrationNumber = (EditText) view.findViewById(R.id.txt_registration_number);
-        editTextRegistrationDate = (EditText) view.findViewById(R.id.txt_registration_date);
-        editTextRegistrationExpired = (EditText) view.findViewById(R.id.txt_registration_expired);
-        editTextAverageFuelConsumpt = (EditText) view.findViewById(R.id.txt_average_fuel_consumption);
-        checkBoxisFree = (CheckBox) view.findViewById(R.id.checkBox2);
-        buttonVehicleSave = (Button) view.findViewById(R.id.add_vehicle_buttonSave);
-        buttonVehicleCancel = (Button) view.findViewById(R.id.add_vehicle_buttonCancel);
-        seekBarAverageFuel = (SeekBar) view.findViewById(R.id.seekFuelstatus);
-        editTextkmNumber = (EditText) view.findViewById(R.id.txt_kmNumber);
+        ButterKnife.bind(this, view);
 
         buttonVehicleCancel.setOnClickListener(this);
         buttonVehicleSave.setOnClickListener(this);
         editTextRegistrationExpired.setOnClickListener(this);
         editTextRegistrationDate.setOnClickListener(this);
 
-
         dateTimeFormatter = DateTimeFormat.forPattern("DD.MM.yyyy.");
         DateTime d = DateTime.now();
         registrationDate = d;
         registrationExpiredDate = d;
-
 
         return view;
     }
@@ -120,7 +113,7 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
                         editTextChassisNumber.getText().toString(),
                         editTextregistrationNumber.getText().toString(),
                         (Double.parseDouble(editTextAverageFuelConsumpt.getText().toString())),
-                        checkBoxisFree.isChecked(),
+                        true,
                         Long.valueOf(seekBarAverageFuel.getProgress()),
                         Long.parseLong(editTextkmNumber.getText().toString()));
                 vehicleLab.addVehicle(vehicle);
@@ -133,6 +126,7 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
         }
 
     }
+
     /*
     otvara dateTimePicker za odabir datuma
     registracije(editTextRegistrationDate)
@@ -220,9 +214,7 @@ public class AddVehicleFragment extends Fragment implements View.OnClickListener
             return false;
         }
 
-
         return ret;
     }
-
 
 }

@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:orientation="vertical"
     android:background="#f6f6f6"
     android:fadingEdge="vertical"
-    android:gravity="bottom">
+    android:gravity="bottom"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
             android:id="@+id/label_manufacturer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/manufacturer"
             android:layout_weight="0.75"
+            android:text="@string/manufacturer"
             android:textAlignment="center" />
 
         <EditText
@@ -27,8 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Manufacturer"
-            android:clickable="false" />
+            android:clickable="false"
+            tools:text="Manufacturer" />
 
     </LinearLayout>
 
@@ -41,8 +41,8 @@
             android:id="@+id/label_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_model"
             android:layout_weight="0.75"
+            android:text="@string/label_model"
             android:textAlignment="center" />
 
         <EditText
@@ -50,8 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Model"
-            android:clickable="false" />
+            android:clickable="false"
+            tools:text="Model" />
     </LinearLayout>
 
 
@@ -64,8 +64,8 @@
             android:id="@+id/label_registration_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_registration_number"
             android:layout_weight="0.75"
+            android:text="@string/label_registration_number"
             android:textAlignment="center" />
 
         <EditText
@@ -73,8 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Registration number"
-            android:clickable="false" />
+            android:clickable="false"
+            tools:text="Registration number" />
     </LinearLayout>
 
     <LinearLayout
@@ -86,8 +86,8 @@
             android:id="@+id/label_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_status"
             android:layout_weight="0.75"
+            android:text="@string/label_status"
             android:textAlignment="center" />
 
         <EditText
@@ -95,8 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Status"
-            android:clickable="false" />
+            android:clickable="false"
+            tools:text="Status" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,8 +108,8 @@
             android:id="@+id/label_driver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_driver"
             android:layout_weight="0.75"
+            android:text="@string/label_driver"
             android:textAlignment="center" />
 
         <EditText
@@ -117,8 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            tools:text="Driver"
-            android:clickable="false" />
+            android:clickable="false"
+            tools:text="Driver" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,11 +126,11 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="@string/button_delete"
+            android:id="@+id/list_button_deleteVehicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/list_button_deleteVehicle"
+            android:text="@string/button_delete"
 
             />
     </LinearLayout>

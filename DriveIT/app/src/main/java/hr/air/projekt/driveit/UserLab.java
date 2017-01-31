@@ -18,8 +18,6 @@ import hr.air.projekt.datamodule.User;
 public class UserLab {
     private static final String CHILD_USER = "users";
 
-
-
     public UserLab() {
     }
 
@@ -63,7 +61,6 @@ public class UserLab {
         DatabaseReference dbu = FirebaseDatabase.getInstance().getReference().child("roles").child("user").child(uid);
         dbu.setValue(u);
     }
-
 
     public void deleteUser(User u) {
         System.out.println(u.getFirstName());

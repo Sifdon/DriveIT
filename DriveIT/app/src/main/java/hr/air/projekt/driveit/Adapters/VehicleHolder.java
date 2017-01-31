@@ -11,18 +11,26 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hr.air.projekt.datamodule.User;
 import hr.air.projekt.datamodule.Vehicle;
 import hr.air.projekt.driveit.Fragments.VehicleDetailFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.R;
+import hr.air.projekt.driveit.UserLab;
 import hr.air.projekt.driveit.VehicleLab;
 
 /**
@@ -32,7 +40,8 @@ import hr.air.projekt.driveit.VehicleLab;
 public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener, View.OnClickListener {
 
     private static final String VEHICLE_DETAILS = "VehicleDetails";
-
+    private static final String CHILD_USER = "users";
+    private static final String CHILD_TRAVELED_ORDERS = "travelOrders";
 
     @BindView(R.id.list_manufacturer)
     EditText editTextManufacturer;
@@ -46,12 +55,18 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
     EditText editTextfree;
     @BindView(R.id.list_button_deleteVehicle)
     Button buttonDelete;
+    @BindView(R.id.label_driver)
+    TextView labeldriver;
 
     private Vehicle vehicledata;
-
     private List<Vehicle> allVehicle;
     private VehicleLab vehicleLab = new VehicleLab();
     private VehicleAdapter adapter;
+    private List<User> allUsers;
+    private UserLab userLab = new UserLab();
+
+
+
 
     public VehicleHolder(View itemView, List<Vehicle> vehicles, VehicleAdapter vehicleAdapter) {
         super(itemView);
@@ -60,7 +75,7 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
 
         editTextManufacturer.setEnabled(false);
         editTextfree.setEnabled(false);
-        // editTextdriver.setEnabled(false);
+        editTextdriver.setEnabled(false);
         editTextmodel.setEnabled(false);
         editTextregistrationNumber.setEnabled(false);
         buttonDelete.setOnClickListener(this);
@@ -69,21 +84,70 @@ public class VehicleHolder extends RecyclerView.ViewHolder implements View.OnLon
         this.adapter = vehicleAdapter;
     }
 
+    private  void   setVehicleStatus (boolean status){
 
-    public void bindVehicle(Vehicle vehicle) {
-        this.vehicledata = vehicle;
-        editTextManufacturer.setText(vehicledata.getManufacturer());
-        editTextmodel.setText(vehicledata.getModel());
-        editTextregistrationNumber.setText(vehicledata.getRegistrationNumber());
-        if (vehicledata.isFree() == true) {
+        if (status == true) {
             editTextfree.setText("Free");
             editTextfree.setTextColor(Color.rgb(0, 119, 51));
             editTextfree.setTypeface(null, Typeface.BOLD);
+            editTextdriver.setVisibility(View.GONE);
+            labeldriver.setVisibility(View.GONE);
         } else {
             editTextfree.setText("Taken");
             editTextfree.setTextColor(Color.RED);
             editTextfree.setTypeface(null, Typeface.BOLD);
         }
+    }
+
+    public void bindVehicle(Vehicle vehicle) {
+
+        this.vehicledata = vehicle;
+        editTextManufacturer.setText(vehicledata.getManufacturer());
+        editTextmodel.setText(vehicledata.getModel());
+        editTextregistrationNumber.setText(vehicledata.getRegistrationNumber());
+        setVehicleStatus(vehicle.isFree());
+
+
+        DatabaseReference dbUser = FirebaseDatabase.getInstance().getReference().child(CHILD_USER);
+        dbUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                allUsers = userLab.getUserList((Map<String, Object>) dataSnapshot.getValue());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference dbTravelOrder = FirebaseDatabase.getInstance().getReference().child(CHILD_TRAVELED_ORDERS);
+        dbTravelOrder.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<String, Object> travelORders = (Map<String, Object>) dataSnapshot.getValue();
+                for (Map.Entry<String,Object> tO : travelORders.entrySet()){
+                    Map signleTo = (Map) tO.getValue();
+                    if(signleTo.get("vehicleId").equals(vehicledata.getChassisNumber())&& (boolean)signleTo.get("open")==true){
+
+                        for (User u : allUsers){
+                            if(u.getUid().equals(signleTo.get("userId"))){
+                                editTextdriver.setText(u.getFirstName()+ " " + u.getLastName());
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

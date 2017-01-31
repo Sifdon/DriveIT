@@ -231,7 +231,7 @@
                     <AutoCompleteTextView
                         android:id="@+id/txt_average_fuel_consumption"
                         style="@android:style/Widget.AutoCompleteTextView"
-                        android:layout_width="117dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/average_fuel_consumption"
                         android:inputType="numberDecimal"
@@ -240,16 +240,6 @@
                         android:imeOptions="actionNext"/>
 
                 </android.support.design.widget.TextInputLayout>
-
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="96dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="39dp"
-                    android:text="@string/free" />
 
             </RelativeLayout>
 

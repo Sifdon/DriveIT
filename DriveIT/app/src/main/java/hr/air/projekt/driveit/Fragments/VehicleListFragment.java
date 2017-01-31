@@ -35,6 +35,9 @@ public class VehicleListFragment extends Fragment implements NavigationItem, Vie
     private int position;
 
     private static final String CHILD_VEHICLE = "vehicles";
+
+
+
     private RecyclerView vehicleRecyclerview;
     private FloatingActionButton floatingActionButtonAddVehicle;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();

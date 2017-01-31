@@ -2,6 +2,7 @@ package hr.air.projekt.driveit.Helper;
 
 import android.widget.EditText;
 
+import hr.air.projekt.datamodule.User;
 import hr.air.projekt.driveit.R;
 
 /**
@@ -9,15 +10,16 @@ import hr.air.projekt.driveit.R;
  */
 
 public class Validation {
-    public static boolean hasText(EditText editText){
+    public static boolean hasText(EditText editText) {
 
         String text = editText.getText().toString().trim();
         editText.setError(null);
 
-        if(text.length()==0){
+        if (text.length() == 0) {
             editText.setError(CurrentActivity.getActivity().getString(R.string.required));
             return false;
         }
         return true;
     }
 }
+
