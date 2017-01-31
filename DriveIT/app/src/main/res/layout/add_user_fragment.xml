@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -96,7 +97,9 @@
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:touchscreenBlocksFocus="false">
+                android:touchscreenBlocksFocus="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTintMode="src_atop">
 
                 <AutoCompleteTextView
                     android:id="@+id/add_user_password"
@@ -104,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
+                    android:autoText="false"
                     android:hint="@string/label_password"
                     android:inputType="textPassword"
                     android:maxLines="1"
@@ -116,7 +120,9 @@
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:touchscreenBlocksFocus="false">
+                android:touchscreenBlocksFocus="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTintMode="src_atop">
 
                 <AutoCompleteTextView
                     android:id="@+id/add_user_repeatPassword"

@@ -67,21 +67,24 @@
                     android:shadowRadius="12"
                     android:autoText="false"
                     android:contentDescription="@string/hint_email"
-                    android:fontFamily="sans-serif" />
+                    android:fontFamily="sans-serif"
+                    android:imeOptions="actionNext"/>
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/txtPassword">
+                android:id="@+id/txtPassword"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:hint="@string/hint_password"
-                    android:id="@+id/txt_password" />
+                    android:id="@+id/txt_password"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
 

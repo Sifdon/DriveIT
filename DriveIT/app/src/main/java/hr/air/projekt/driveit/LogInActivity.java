@@ -43,7 +43,7 @@ public class LogInActivity extends AppCompatActivity {
     EditText editTextPassword;
     @BindView(R.id.txt_email)
     EditText editTextUsername;
-    @BindView(R.id.button_log_in)
+    //@BindView(R.id.button_log_in)
     Button buttonLogIn;
     @BindView(R.id.login_progress)
     ProgressBar progressBar;
@@ -83,22 +83,29 @@ public class LogInActivity extends AppCompatActivity {
     private void signIn() {
         String user = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
-        firebaseAuth.signInWithEmailAndPassword(user, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful()) {
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(i);
-                    finish();
-                    Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
-                    logedIn = true;
-                    progressBar.setVisibility(View.GONE);
-                    progressBar.setVisibility(View.VISIBLE);
+        if (isValidEmail(user)){
+            firebaseAuth.signInWithEmailAndPassword(user, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if (task.isSuccessful()) {
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                        finish();
+                        Log.d(TAG, "signIn: is successful! " + task.isSuccessful());
+                        logedIn = true;
+                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
+
                 }
+            });
+        } else {
+            Toast.makeText(this,"Check mail!",Toast.LENGTH_LONG).show();
+        }
 
-            }
-        });
+
 
     }
 

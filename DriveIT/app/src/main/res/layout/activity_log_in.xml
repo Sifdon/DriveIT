@@ -48,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 style="@style/Widget.Design.TextInputLayout"
-                android:id="@+id/txtEmail">
+                android:id="@+id/txtEmail"
+                app:passwordToggleEnabled="false">
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
@@ -68,7 +69,9 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/txtPassword">
+                android:id="@+id/txtPassword"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTintMode="src_atop">
 
                 <EditText
                     android:layout_width="match_parent"
