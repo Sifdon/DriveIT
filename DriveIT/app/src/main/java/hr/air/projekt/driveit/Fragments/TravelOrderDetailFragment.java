@@ -14,13 +14,15 @@ import android.widget.Switch;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hr.air.projekt.datamodule.TravelOrder;
+import hr.air.projekt.driveit.GpsTracking;
+import hr.air.projekt.driveit.Helper.CalculateKilometers;
 import hr.air.projekt.driveit.R;
 
 /**
  * Created by Stjepan on 29.1.2017..
  */
 
-public class TravelOrderDetailFragment extends Fragment implements View.OnClickListener {
+public class TravelOrderDetailFragment extends Fragment implements View.OnClickListener{
     private static final String TRAVEL_ORDER_DETAILS = "travelOrderDetails";
     private static final String USER_NAME = "userName";
 
@@ -46,6 +48,7 @@ public class TravelOrderDetailFragment extends Fragment implements View.OnClickL
     Button buttonCancel;
 
     private TravelOrder travelOrderData;
+    private GpsTracking gpsTracking = new GpsTracking();
     private String userName;
     @Nullable
     @Override
@@ -59,6 +62,7 @@ public class TravelOrderDetailFragment extends Fragment implements View.OnClickL
         Bundle bundle = getArguments();
         travelOrderData = (TravelOrder) bundle.getSerializable(TRAVEL_ORDER_DETAILS);
         userName = bundle.getString(userName);
+        gpsTracking.setCrossedDistance(travelOrderData);
 
         editTextUser.setText(userName);
         editTextVehicle.setText(travelOrderData.getVehicleId());
@@ -70,6 +74,7 @@ public class TravelOrderDetailFragment extends Fragment implements View.OnClickL
         aSwitchIsOpen.setChecked(travelOrderData.isOpen());
 
 
+
         return view;
     }
 
@@ -77,4 +82,6 @@ public class TravelOrderDetailFragment extends Fragment implements View.OnClickL
     public void onClick(View v) {
 
     }
+
+
 }
