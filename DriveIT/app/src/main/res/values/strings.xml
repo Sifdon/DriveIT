@@ -77,7 +77,7 @@
     <string name="startDate">Start date</string>
     <string name="endDate">End date</string>
     <string name="user">User</string>
-    <string name="service_added" >Service added</string>
+    <string name="service_added">Service added</string>
     <string name="malfunctions">Malfunctions</string>
 
     <string name="startMileage">Mileage at start</string>
@@ -106,6 +106,9 @@
     <string name="services">Services</string>
     <string name="update_service_label">Update service</string>
     <string name="add_service_label">Add service</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

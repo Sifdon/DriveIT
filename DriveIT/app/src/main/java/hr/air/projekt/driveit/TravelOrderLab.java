@@ -5,12 +5,13 @@ import java.util.Map;
 
 import hr.air.projekt.datamodule.Service;
 import hr.air.projekt.datamodule.TravelOrder;
+import hr.air.projekt.driveit.Helper.CalculateKilometers;
 
 /**
  * Created by Stjepan on 29.1.2017..
  */
 
-public class TravelOrderLab {
+public class TravelOrderLab implements CalculateKilometers{
 
     public ArrayList<TravelOrder> getTravelOrderList (Map<String, Object> travelOrderMap) {
         ArrayList<TravelOrder> travelOrderList = new ArrayList<TravelOrder>();
@@ -28,5 +29,12 @@ public class TravelOrderLab {
             travelOrderList.add(t);
         }
         return travelOrderList;
+    }
+
+    @Override
+    public int SaveCrossedDistance(TravelOrder travelOrder) {
+
+
+        return 0;
     }
 }
