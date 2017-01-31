@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.*;
 import hr.air.projekt.datamodule.TravelOrder;
 import hr.air.projekt.driveit.GpsTracking;
 import hr.air.projekt.driveit.Helper.CalculateKilometers;

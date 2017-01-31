@@ -11,7 +11,7 @@ import hr.air.projekt.driveit.Helper.CalculateKilometers;
  * Created by Stjepan on 29.1.2017..
  */
 
-public class TravelOrderLab implements CalculateKilometers{
+public class TravelOrderLab{
 
     public ArrayList<TravelOrder> getTravelOrderList (Map<String, Object> travelOrderMap) {
         ArrayList<TravelOrder> travelOrderList = new ArrayList<TravelOrder>();
@@ -31,10 +31,5 @@ public class TravelOrderLab implements CalculateKilometers{
         return travelOrderList;
     }
 
-    @Override
-    public int SaveCrossedDistance(TravelOrder travelOrder) {
 
-
-        return 0;
-    }
 }
