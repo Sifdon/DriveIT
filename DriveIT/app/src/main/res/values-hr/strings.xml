@@ -81,4 +81,26 @@
     <string name="user">Korisnik</string>
     <string name="vehicle_added">Dodano vozilo</string>
     <string name="vehicle_updated">Ažurirano vozilo</string>
+    <string name="add_malfunction">Dodaj kvar</string>
+    <string name="services">Servisi</string>
+    <string name="add_service_label">Dodaj servis</string>
+    <string name="crossedMileage">Prekoračena kilometraža</string>
+    <string name="date_of_service">Datum servisa</string>
+    <string name="description_of_service">Opis</string>
+    <string name="endMileage">Kilometraža na kraju</string>
+    <string name="fill_all_fields">Popunite sva polja</string>
+    <string name="fill_manufacturer_name">Unesite ime majstora</string>
+    <string name="free">Slobodno</string>
+    <string name="fuel_status">Stanje goriva</string>
+    <string name="lbl_malfunction_name">Naziv kvara</string>
+    <string name="malfunctionsS">Kvarovi</string>
+    <string name="mechanician">Mehaničar</string>
+    <string name="new_vehicle">Novo vozilo</string>
+    <string name="required">Potreban</string>
+    <string name="startMileage">Kilometraža na početku</string>
+    <string name="update_malfunction">Ažuriraj kvar</string>
+    <string name="update_service_label">Ažuriraj servis</string>
+    <string name="update_vehicle">Ažuriraj vozilo</string>
+    <string name="users">Korisnici</string>
+    <string name="vehicles">Vozila</string>
 </resources>
