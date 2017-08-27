@@ -95,11 +95,11 @@ public class AddServiceFragment extends Fragment implements View.OnClickListener
         bindViews();
         ButterKnife.bind(this,view);
 
-        fmt = DateTimeFormat.forPattern("DD.MM.yyyy.");
+        fmt = DateTimeFormat.forPattern("dd.MM.yyyy.");
         dateOfNextService = DateTime.now(DateTimeZone.UTC);
 
 
-        DateTimeFormatter fmtt = DateTimeFormat.forPattern("DD.MM.yyyy.");
+        DateTimeFormatter fmtt = DateTimeFormat.forPattern("dd.MM.yyyy.");
         editTextDateOfService.setText(DateTime.now().toString(fmtt));
 
         editTextDateOfNextService.setOnClickListener(this);
@@ -122,8 +122,6 @@ public class AddServiceFragment extends Fragment implements View.OnClickListener
 
             }
         });
-
-
         return view;
     }
 

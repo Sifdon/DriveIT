@@ -92,4 +92,9 @@ public class VehicleLab {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicle.getChassisNumber());
         db.removeValue();
     }
+
+    public void updateMileage(Long mileage, String vehicleId){
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_VEHICLES).child(vehicleId).child("kmNumber");
+        db.setValue(mileage);
+    }
 }

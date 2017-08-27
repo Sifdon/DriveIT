@@ -28,6 +28,7 @@ import java.util.Map;
 import hr.air.projekt.datamodule.TravelOrder;
 import hr.air.projekt.driveit.Adapters.ServiceAdapter;
 import hr.air.projekt.driveit.Adapters.TravelOrderAdapter;
+import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.NavigationItem;
 import hr.air.projekt.driveit.R;
 import hr.air.projekt.driveit.ServiceLab;
@@ -83,7 +84,13 @@ public class TravelOrderListFragment extends Fragment implements NavigationItem,
 
     @Override
     public void onClick(View v) {
-
+        if(v==floatingActionButtonAddTravelOrder){
+            Fragment nextFrag = new AddTravelOrderFragment();
+            CurrentActivity.getActivity().getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, nextFrag,null)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
 

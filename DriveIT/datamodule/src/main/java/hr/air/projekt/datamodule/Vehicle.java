@@ -7,17 +7,29 @@ import java.io.Serializable;
  */
 
 public class Vehicle implements Serializable{
+    @com.google.gson.annotations.SerializedName("manufacturer")
     private String manufacturer;
+    @com.google.gson.annotations.SerializedName("model")
     private String model;
+    @com.google.gson.annotations.SerializedName("productYear")
     private Long productYear;
+    @com.google.gson.annotations.SerializedName("registrationDate")
     private String registrationDate;
+    @com.google.gson.annotations.SerializedName("registrationExpired")
     private String registrationExpired;
+    @com.google.gson.annotations.SerializedName("kw")
     private Long kw;
+    @com.google.gson.annotations.SerializedName("chassisNumber")
     private String chassisNumber;
+    @com.google.gson.annotations.SerializedName("registrationNumber")
     private String registrationNumber;
+    @com.google.gson.annotations.SerializedName("averageFuelConsumption")
     private Double averageFuelConsumption;
+    @com.google.gson.annotations.SerializedName("free")
     private boolean free;
+    @com.google.gson.annotations.SerializedName("fuelStatus")
     private Long fuelStatus;
+    @com.google.gson.annotations.SerializedName("KmNumber")
     private Long KmNumber;
 
     public Vehicle() {

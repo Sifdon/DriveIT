@@ -61,7 +61,7 @@ public class ServiceHolder extends RecyclerView.ViewHolder implements View.OnLon
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("users").child(serviceData.getMechanic());
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, Object> user = (Map<String, Object>) dataSnapshot.getValue();
                 mechanicName = user.get("firstName") + " " + user.get("lastName");
                 editTextMechanician.setText(mechanicName);

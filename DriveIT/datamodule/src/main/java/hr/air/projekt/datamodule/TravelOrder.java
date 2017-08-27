@@ -106,10 +106,9 @@ public class TravelOrder implements Serializable {
     }
 
     public long getCrossedKm() {
-        return crossedKm;
+        return endKm - startKm;
     }
-
-    public void setCrossedKm(long crossedKm) {
+    public void setCrossedKm(long crossedKm){
         this.crossedKm = crossedKm;
     }
 }

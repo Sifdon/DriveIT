@@ -1,9 +1,12 @@
 package hr.air.projekt.driveit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.app.FragmentManager;
+import android.preference.PreferenceManager;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,10 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -41,10 +40,12 @@ import hr.air.projekt.driveit.Fragments.VehicleListFragment;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.Helper.CurrentFirebaseAuth;
 import hr.air.projekt.driveit.Helper.CurrentUser;
+import hr.air.projekt.driveit.Helper.Util;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
-        FragmentManager.OnBackStackChangedListener {
+        FragmentManager.OnBackStackChangedListener,
+        SharedPreferences.OnSharedPreferenceChangeListener{
     private final static String TAG = "DriveIT";
     private static final String CHILD_USER = "users";
     private static FirebaseAuth firebaseAuth;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements
     private TextView textViewCurrentUserName;
     private TextView textViewCurrentUserEmail;
 
+    private Util util = new Util();
+    private SharedPreferences mSharedPreferences;
 
     private UserLab userLab = new UserLab();
 
@@ -77,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements
         textViewCurrentUserName = (TextView) findViewById(R.id.textViewCurrentUserName);
         textViewCurrentUserEmail = (TextView) findViewById(R.id.textViewCurrentUserEmail);
 
+
+        util.setLanguage(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferences.registerOnSharedPreferenceChangeListener(this);
         /*
         DATETIME PODSJETNIK
         String date = "15:45:28, 21.01.2017.";
@@ -104,6 +111,14 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private void setCurrentUser() {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child(CHILD_USER);
         db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -122,25 +137,25 @@ public class MainActivity extends AppCompatActivity implements
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.activity_app_preference:
+                Intent intent = new Intent(this, AppPreferenceActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        util.setLanguage(this);
+        this.recreate();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -226,4 +241,6 @@ public class MainActivity extends AppCompatActivity implements
             }
         }
     };
+
+
 }

@@ -59,10 +59,12 @@
 
         <Spinner
             android:id="@+id/add_travel_order_vehiclePicker"
-            style="@android:style/Widget.Holo.Light.Spinner"
+            style="@android:style/Widget.Spinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:prompt="@string/vehicle" />
+            android:prompt="@string/vehicle"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,10 +134,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:hint="@string/startMileage"
                     android:paddingTop="5dp"
                     tools:text="50000" />

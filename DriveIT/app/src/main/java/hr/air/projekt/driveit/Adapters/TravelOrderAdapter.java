@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hr.air.projekt.datamodule.TravelOrder;
+import hr.air.projekt.driveit.GpsTracking;
 import hr.air.projekt.driveit.Helper.CurrentActivity;
 import hr.air.projekt.driveit.R;
 
@@ -34,6 +35,8 @@ public class TravelOrderAdapter extends RecyclerView.Adapter<TravelOrderHolder> 
     @Override
     public void onBindViewHolder(TravelOrderHolder holder, int position) {
         TravelOrder travelOrder = travelOrderList.get(position);
+        GpsTracking gpsTracking = new GpsTracking(holder);
+        gpsTracking.setCrossedDistance(travelOrder);
         holder.bindTravelOrder(travelOrder);
     }
 
