@@ -35,8 +35,6 @@ public class TravelOrderAdapter extends RecyclerView.Adapter<TravelOrderHolder> 
     @Override
     public void onBindViewHolder(TravelOrderHolder holder, int position) {
         TravelOrder travelOrder = travelOrderList.get(position);
-        GpsTracking gpsTracking = new GpsTracking(holder);
-        gpsTracking.setCrossedDistance(travelOrder);
         holder.bindTravelOrder(travelOrder);
     }
 

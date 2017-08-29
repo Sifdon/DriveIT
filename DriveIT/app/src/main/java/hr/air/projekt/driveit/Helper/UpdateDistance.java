@@ -1,6 +1,7 @@
 package hr.air.projekt.driveit.Helper;
 
 import hr.air.projekt.datamodule.TravelOrder;
+import hr.foi.air.common.OnDataLoaded;
 
 /**
  * Created by scolak on 22.08.17..
@@ -9,5 +10,8 @@ import hr.air.projekt.datamodule.TravelOrder;
 
 
 public interface UpdateDistance {
-    void setCrossedDistance(TravelOrder travelOrder);
+    void getCrossedDistance(OnDataLoaded onDataLoaded);
+    void  setOnDataLoaded (OnDataLoaded onDataLoaded);
 }
+
+

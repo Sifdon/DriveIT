@@ -169,6 +169,13 @@
                     android:hint="@string/endMileage"
                     android:paddingTop="5dp"
                     tools:text="56000" />
+
+                <Button
+                    android:id="@+id/use_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="..." />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
